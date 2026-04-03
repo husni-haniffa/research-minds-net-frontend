@@ -15,7 +15,7 @@ export const FundingTableSkeleton = () => {
                 <TableHead>Affiliation</TableHead>
                 <TableHead>Research Area</TableHead>
                 <TableHead>Funding Amount</TableHead>
-                 <TableHead>Applied on</TableHead>
+                <TableHead>Applied on</TableHead>
                 <TableHead>More Info</TableHead>
                 <TableHead>Delete</TableHead>
             </TableRow>
@@ -42,7 +42,10 @@ export const FundingTableSkeleton = () => {
               <Skeleton className="h-5 w-15" />
             </TableCell>
              <TableCell>
-              <Skeleton className="h-9 w-5" />
+              <Skeleton className="h-5 w-15" />
+            </TableCell>
+            <TableCell>
+              <Skeleton className="h-9 w-12" />
             </TableCell>
             <TableCell>
               <Skeleton className="h-9 w-12" />
@@ -53,29 +56,5 @@ export const FundingTableSkeleton = () => {
     </Table>
     </div>
    
-  )
-}
-
-export const CategoryFormSkeleton = () => {
-  return (
-    <Card className="w-full border-0 shadow-none">
-      <CardHeader>
-        <CardTitle>
-          <Skeleton className="h-7 w-32" />
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-40" />
-          <Skeleton className="h-10 w-full" />
-        </div>
-      </CardContent>
-      <CardFooter>
-        <div className="flex gap-2">
-          <Skeleton className="h-10 w-20" />
-          <Skeleton className="h-10 w-20" />
-        </div>
-      </CardFooter>
-    </Card>
   )
 }

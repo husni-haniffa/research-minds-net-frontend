@@ -41,9 +41,7 @@ export const IdeaTableSkeleton = () => {
             <TableCell>
               <Skeleton className="h-9 w-12" />
             </TableCell>
-            <TableCell>
-              <Skeleton className="h-9 w-12" />
-            </TableCell>
+           
           </TableRow>
         ))}
       </TableBody>
