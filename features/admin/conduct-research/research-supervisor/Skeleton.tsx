@@ -46,6 +46,9 @@ export const SupervisorTableSkeleton = () => {
             <TableCell>
               <Skeleton className="h-9 w-12" />
             </TableCell>
+            <TableCell>
+              <Skeleton className="h-9 w-12" />
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
