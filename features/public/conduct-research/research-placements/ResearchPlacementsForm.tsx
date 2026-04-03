@@ -387,18 +387,22 @@ const ResearchPlacementsForm = ({ onSuccess } : ResearchPlacementsFormProps) => 
 
              
 
-             <Controller
+              <Controller
   name="howCanYouContribute"
   control={form.control}
   render={({ field, fieldState }) => {
-    const isOther = field.value === "I can contribute in another way";
+    const isOther = field.value === "I can contribute in another way" || 
+      (field.value !== "" && !typeofContributions?.some(t => t.value === field.value));
+
     return (
       <Field data-invalid={fieldState.invalid}>
-        <FieldLabel htmlFor="research-helps-contribution">
+        <FieldLabel htmlFor="research-funding-contribution">
           How can you contribute?
         </FieldLabel>
         <Select
-          onValueChange={field.onChange}
+          onValueChange={(val) => {
+            field.onChange(val); // sets to "I can contribute in another way"
+          }}
           value={isOther ? "I can contribute in another way" : field.value}
         >
           <SelectTrigger>
@@ -415,12 +419,12 @@ const ResearchPlacementsForm = ({ onSuccess } : ResearchPlacementsFormProps) => 
 
         {isOther && (
           <Input
-            id="research-placements-contribution-other"
+            id="research-funding-contribution-other"
             placeholder="Please specify how you can contribute..."
-            onChange={(e) => field.onChange(e.target.value)} // ← Use onChange directly
+            onChange={(e) => field.onChange(e.target.value)}
             onBlur={field.onBlur}
             ref={field.ref}
-            value={isOther ? "" : field.value} // ← Don't bind the "other" string here
+            value={isOther && field.value !== "I can contribute in another way" ? field.value : ""}
             className="text-xs xl:text-sm mt-2"
           />
         )}
