@@ -33,9 +33,9 @@ export interface EditSubmissionFormProps extends CreateSubmissionFormProps {
 }
 
 export const formSchema = z.object({
-    categoryId: z.string().min(1, "Category is required"),
+    categoryId: z.string({error: "Select a category"}).min(1, "Select a category"),
 
-    researchTypeId: z.string().min(1, "Research Type is required"),
+    researchTypeId: z.string({ error: "Select a Research type" }).min(1, "Select a research type"),
 
     title: z
         .string()
@@ -65,7 +65,7 @@ export const formSchema = z.object({
         .max(5, "No more than 5 keywords allowed"),
 
     file: z
-        .instanceof(File)
+        .instanceof(File, {error: "Please upload a research paper"})
         .refine(
             (file) =>
                 [
