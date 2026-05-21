@@ -1,4 +1,5 @@
 "use client"
+import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import {
   SidebarProvider,
@@ -7,7 +8,7 @@ import {
 } from "@/components/ui/sidebar"
 import { AdminAppSideBar } from "@/features/admin/dashboard/AdminAppSideBar"
 import { UserInfoSkeleton } from "@/features/admin/dashboard/Skeleton"
-import { SignedIn, UserButton, useUser } from "@clerk/nextjs"
+import { SignedIn, SignOutButton, UserButton, useUser } from "@clerk/nextjs"
 
 export default function AdminLayout({
   children,
@@ -33,7 +34,9 @@ export default function AdminLayout({
               </div>
 
               <SignedIn>
-                <UserButton />
+                <Button size="sm" asChild className='font-semibold'>
+                  <SignOutButton />
+                </Button>
               </SignedIn>
             </div>
           </div>
