@@ -35,6 +35,7 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
       categoryId: "",
       minorResearchIdea: "",
       noOfStudents: "",
+      motivation: "",
       howCanYouContribute: ""
     },
   })
@@ -445,6 +446,29 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                   </Field>
                 )}
               />
+
+            <Controller
+              name="motivation"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="research-supervisor-motivation">
+                    Motivation
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="research-supervisor-motivation"
+                    aria-invalid={fieldState.invalid}
+                    placeholder="Motivation"
+                    autoComplete="off"
+                    className="text-xs xl:text-sm"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
 
               <Controller
   name="howCanYouContribute"

@@ -82,6 +82,10 @@ export const formSchema = z.object({
         .min(1, "No of Students must be at least 1")
         .max(50, "Too long"),
 
+    motivation: z
+        .string()
+        .max(5000, "Too long"),
+
     howCanYouContribute: z
         .string()
         .trim()
@@ -132,6 +136,7 @@ export interface ResearchSupervisor {
     }
     minorResearchIdea: string;
     noOfStudents: string;
+    motivation: string
     howCanYouContribute: string;
     createdAt: string
     updatedAt: string
