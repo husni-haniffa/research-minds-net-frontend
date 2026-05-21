@@ -4,8 +4,9 @@ import { Button } from '../ui/button'
 import { navLinks } from '@/lib/navLinks'
 import { usePathname } from 'next/navigation'
 import MobileNavbar from './MobileNavbar'
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, SignOutButton, UserButton } from '@clerk/nextjs'
 import { useCheckRole } from '@/utils/checkRole'
+import React from 'react'
 
 // Navbar
 const Navbar = () => {
@@ -26,29 +27,34 @@ const Navbar = () => {
 
           {/* Desktop nav links */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  pathname === link.href
-                    ? "bg-blue-50 text-blue-600 font-semibold"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                }`}>
-                {link.name}
-              </Link>
+            {navLinks.map((link, index) => (
+              <React.Fragment key={link.name}>
+                <Link
+                  href={link.href}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${pathname === link.href
+                      ? "bg-blue-50 text-blue-600 font-semibold"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                    }`}
+                >
+                  {link.name}
+                </Link>
+
+                {/* Show after Conduct Research */}
+                {index === 0 && (
+                  <SignedIn>
+                    <Link
+                      href="/user/submissions"
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${pathname === "/user/submissions"
+                          ? "bg-blue-50 text-blue-600 font-semibold"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                        }`}
+                    >
+                      Submissions
+                    </Link>
+                  </SignedIn>
+                )}
+              </React.Fragment>
             ))}
-            <SignedIn>
-              <Link
-                href="/user/submissions"
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  pathname === "/user/submissions"
-                    ? "bg-blue-50 text-blue-600 font-semibold"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                }`}>
-                Submissions
-              </Link>
-            </SignedIn>
           </div>
 
           {/* Desktop actions */}
@@ -64,12 +70,17 @@ const Navbar = () => {
                   Submit Your Paper
                 </Link>
               </Button>
-              <Button asChild size="sm" className="font-semibold bg-slate-900 hover:bg-slate-800 text-white border-none">
+              <Button asChild size="sm" variant={'secondary'}>
                 <Link href="/sign-in">Sign In</Link>
+              </Button>
+              <Button asChild size="sm" className="font-semibold bg-slate-900 hover:bg-slate-800 text-white border-none">
+                <Link href="/sign-up">Sign Up</Link>
               </Button>
             </SignedOut>
             <SignedIn>
-              <UserButton />
+              <Button size="sm" asChild className='font-semibold'>
+                <SignOutButton />
+              </Button>
             </SignedIn>
           </div>
 
