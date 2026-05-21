@@ -1,7 +1,7 @@
 import {
     createResearchHelp,
     fetchResearchHelp,
-} from "@/api/research-help"
+} from "@/api/conduct-research"
 
 export {
     createResearchHelp,
