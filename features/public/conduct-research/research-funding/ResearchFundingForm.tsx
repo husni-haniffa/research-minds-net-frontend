@@ -25,10 +25,10 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
       mobile: "",
       whatsapp: "",
       email: "",
-      linkedin: "https://linkedin.com/in/username",
-      orcid: "https://orcid.org/yourid",
-      researchgate: "https://researchgate.net/profile/yourprofile",
-      scholar: "https://scholar.google.com/citations?user=yourid",
+      linkedin: "",
+      orcid: "",
+      researchgate: "",
+      scholar: "",
       designation: "",
       affiliation: "",
       degree: "",
@@ -67,19 +67,20 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-title">
                       Title
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Title" className="text-xs xl:text-sm" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem key='Mr' value='Mr' className="text-xs xl:text-sm">
-                              Mr
-                            </SelectItem>
-                             <SelectItem key='Miss' value='Miss' className="text-xs xl:text-sm">
-                              Miss
-                            </SelectItem>
-                        </SelectContent>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your title" className="text-xs xl:text-sm" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem key='mr' value='Mr' className="text-xs xl:text-sm">
+                          Mr
+                        </SelectItem>
+                        <SelectItem key='miss' value='Miss' className="text-xs xl:text-sm">
+                          Miss
+                        </SelectItem>
+                      </SelectContent>
                     </Select>
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
@@ -94,13 +95,14 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-name">
-                      Full Name
+                      Enter your full name
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-funding-name"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your full name"
+                      placeholder="E P D N Thilakarathne"
                       autoComplete="name"
                       className="text-xs xl:text-sm"
                     />
@@ -117,12 +119,13 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-designation">
                       Designation
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-funding-designation"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your designation"
+                      placeholder="Lecturer, Researcher, Student..."
                       autoComplete="organization-title"
                       className="text-xs xl:text-sm"
                     />
@@ -142,13 +145,14 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-affiliation">
-                      Affiliation
+                      Institution / Affiliation
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-funding-affiliation"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your institution/organization"
+                      placeholder="Enter your university or organization"
                       autoComplete="organization"
                       className="text-xs xl:text-sm"
                     />
@@ -165,25 +169,26 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-degree">
                       Degree
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Degree" className="text-xs xl:text-sm" />
+                          <SelectValue placeholder="Select your degree" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem key='Bachelor' value='Bachelor' className="text-xs xl:text-sm">
+                            <SelectItem key='bachelor' value='Bachelor' className="text-xs xl:text-sm">
                               Bachelor
                             </SelectItem>
-                             <SelectItem key='Master' value='Master' className="text-xs xl:text-sm">
+                             <SelectItem key='master' value='Master' className="text-xs xl:text-sm">
                               Master
                             </SelectItem>
-                             <SelectItem key='MPhil' value='MPhil' className="text-xs xl:text-sm">
+                             <SelectItem key='mPhil' value='MPhil' className="text-xs xl:text-sm">
                               MPhil
                             </SelectItem>
-                             <SelectItem key='PhD' value='PhD' className="text-xs xl:text-sm">
+                             <SelectItem key='phD' value='PhD' className="text-xs xl:text-sm">
                               PhD
                             </SelectItem>
-                               <SelectItem key='PostDoc' value='PostDoc' className="text-xs xl:text-sm">
+                               <SelectItem key='postDoc' value='PostDoc' className="text-xs xl:text-sm">
                               PostDoc
                             </SelectItem>
                         </SelectContent>
@@ -209,12 +214,13 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-mobile">
                       Mobile Number
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-funding-mobile"
                       aria-invalid={fieldState.invalid}
-                      placeholder="07XXXXXXXX"
+                      placeholder="0774677023"
                       autoComplete="tel"
                       className="text-xs xl:text-sm"
                     />
@@ -232,12 +238,13 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-whatsapp">
                       WhatsApp Number
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-funding-whatsapp"
                       aria-invalid={fieldState.invalid}
-                      placeholder="07XXXXXXXX"
+                      placeholder="0774677023"
                       autoComplete="tel"
                       className="text-xs xl:text-sm"
                     />
@@ -255,6 +262,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-email">
                       Email Address
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
@@ -374,7 +382,8 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-category">
-                      Major Research Area
+                      Research Category
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     {isLoading ? (
                       <SelectSkeleton />
@@ -403,7 +412,8 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-minor">
-                      Minor Research Area For Funding
+                      Minor Research Area
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
@@ -436,7 +446,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                       {...field}
                       id="research-funding-amount"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter Amount"
+                      placeholder="0"
                       autoComplete="off"
                       className="text-xs xl:text-sm"
                     />
@@ -466,7 +476,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
           value={isOther ? "I can contribute in another way" : field.value}
         >
           <SelectTrigger>
-            <SelectValue placeholder="Select contribution type" />
+            <SelectValue placeholder="Select contribution" />
           </SelectTrigger>
           <SelectContent>
             {typeofContributions?.map((type) => (
@@ -480,7 +490,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
         {isOther && (
           <Input
             id="research-funding-contribution-other"
-            placeholder="Please specify how you can contribute..."
+            placeholder="Explain how you can contribute to this research"
             onChange={(e) => field.onChange(e.target.value)}
             onBlur={field.onBlur}
             ref={field.ref}

@@ -447,7 +447,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
 
         {isOther && (
           <Input
-            id="research-funding-contribution-other"
+            id="research-idea-contribution-other"
             placeholder="Explain how you can contribute to this research"
             onChange={(e) => field.onChange(e.target.value)}
             onBlur={field.onBlur}
