@@ -74,10 +74,10 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                           <SelectValue placeholder="Select your title" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem key='Mr' value='Mr' className="text-xs xl:text-sm">
+                            <SelectItem key='mr' value='Mr' className="text-xs xl:text-sm">
                               Mr
                             </SelectItem>
-                             <SelectItem key='Miss' value='Miss' className="text-xs xl:text-sm">
+                             <SelectItem key='miss' value='Miss' className="text-xs xl:text-sm">
                               Miss
                             </SelectItem>
                         </SelectContent>
@@ -423,7 +423,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
 
     return (
       <Field data-invalid={fieldState.invalid}>
-        <FieldLabel htmlFor="research-funding-contribution">
+        <FieldLabel htmlFor="research-idea-contribution">
           How can you contribute?
           <span className="text-red-500">*</span>
         </FieldLabel>

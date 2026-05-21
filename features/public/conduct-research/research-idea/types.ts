@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const phoneRegex = /^07\d{8}$/;
+const phoneRegex = /^\d{10}$/;
 
 export const formSchema = z.object({
     title: z
