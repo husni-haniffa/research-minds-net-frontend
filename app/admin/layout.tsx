@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/sidebar"
 import { AdminAppSideBar } from "@/features/admin/dashboard/AdminAppSideBar"
 import { UserInfoSkeleton } from "@/features/admin/dashboard/Skeleton"
-import { SignedIn, SignOutButton, UserButton, useUser } from "@clerk/nextjs"
+import { SignedIn, SignOutButton, useUser } from "@clerk/nextjs"
 
 export default function AdminLayout({
   children,

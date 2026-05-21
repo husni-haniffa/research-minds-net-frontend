@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { navLinks } from "@/lib/navLinks";
 import { usePathname } from "next/navigation";
-import { SignedIn, SignedOut, SignOutButton, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, SignOutButton } from '@clerk/nextjs'
 import { useCheckRole } from "@/utils/checkRole";
 import React from "react";
 
