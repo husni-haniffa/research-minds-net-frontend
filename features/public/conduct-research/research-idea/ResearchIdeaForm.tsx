@@ -26,10 +26,10 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
       mobile: "",
       whatsapp: "",
       email: "",
-      linkedin: "https://linkedin.com/in/username",
-      orcid: "https://orcid.org/yourid",
-      researchgate: "https://researchgate.net/profile/yourprofile",
-      scholar: "https://scholar.google.com/citations?user=yourid",
+      linkedin: "",
+      orcid: "",
+      researchgate: "",
+      scholar: "",
       designation: "",
       affiliation: "",
       categoryId: "",
@@ -67,10 +67,11 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-title">
                       Title
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Title" className="text-xs xl:text-sm" />
+                          <SelectValue placeholder="Select your title" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectItem key='Mr' value='Mr' className="text-xs xl:text-sm">
@@ -94,13 +95,14 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-name">
-                      Full Name
+                      Enter your full name
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-idea-name"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your full name"
+                      placeholder="E P D N Thilakarathne"
                       autoComplete="name"
                       className="text-xs xl:text-sm"
                     />
@@ -117,12 +119,13 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-designation">
                       Designation
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-idea-designation"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your designation"
+                      placeholder="Lecturer, Researcher, Student..."
                       autoComplete="organization-title"
                       className="text-xs xl:text-sm"
                     />
@@ -143,13 +146,14 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-affiliation">
-                      Affiliation
+                      Institution / Affiliation
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-idea-affiliation"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your institution/organization"
+                      placeholder="Enter your university or organization"
                       autoComplete="organization"
                       className="text-xs xl:text-sm"
                     />
@@ -169,12 +173,13 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-mobile">
                       Mobile Number
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-idea-mobile"
                       aria-invalid={fieldState.invalid}
-                      placeholder="07XXXXXXXX"
+                      placeholder="0771234567"
                       autoComplete="tel"
                       className="text-xs xl:text-sm"
                     />
@@ -192,12 +197,13 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-whatsapp">
                       WhatsApp Number
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-idea-whatsapp"
                       aria-invalid={fieldState.invalid}
-                      placeholder="07XXXXXXXX"
+                      placeholder="0771234567"
                       autoComplete="tel"
                       className="text-xs xl:text-sm"
                     />
@@ -215,6 +221,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-email">
                       Email Address
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
@@ -332,14 +339,15 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-category">
-                      Major Research Area
+                      Research Category
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     {isLoading ? (
                       <SelectSkeleton />
                     ) : (
                       <Select onValueChange={field.onChange} value={field.value}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a category" className="text-xs xl:text-sm" />
+                            <SelectValue placeholder="Select a category" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
                           {data?.map((category) => (
@@ -362,6 +370,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-minor">
                       Minor Research Area
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
@@ -388,6 +397,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-description">
                       Research Idea
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Textarea
                       {...field}
@@ -415,6 +425,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
       <Field data-invalid={fieldState.invalid}>
         <FieldLabel htmlFor="research-funding-contribution">
           How can you contribute?
+          <span className="text-red-500">*</span>
         </FieldLabel>
         <Select
           onValueChange={(val) => {
@@ -423,7 +434,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
           value={isOther ? "I can contribute in another way" : field.value}
         >
           <SelectTrigger>
-            <SelectValue placeholder="Select contribution type" />
+            <SelectValue placeholder="Select a contribution" />
           </SelectTrigger>
           <SelectContent>
             {typeofContributions?.map((type) => (
@@ -437,7 +448,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
         {isOther && (
           <Input
             id="research-funding-contribution-other"
-            placeholder="Please specify how you can contribute..."
+            placeholder="Explain how you can contribute to this research"
             onChange={(e) => field.onChange(e.target.value)}
             onBlur={field.onBlur}
             ref={field.ref}
