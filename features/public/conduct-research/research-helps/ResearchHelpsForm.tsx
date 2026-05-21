@@ -69,7 +69,7 @@ const ResearchHelpsForm = ({ onSuccess } : ResearchHelpsFormProps) => {
                       <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger>
+                      <SelectTrigger id="research-helps-title" className="w-full" aria-invalid={fieldState.invalid}>
                         <SelectValue placeholder="Select your title" className="text-xs xl:text-sm" />
                       </SelectTrigger>
                       <SelectContent>
@@ -94,7 +94,7 @@ const ResearchHelpsForm = ({ onSuccess } : ResearchHelpsFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-helps-name">
-                      Enter your full name
+                      Full Name
                       <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
@@ -150,7 +150,7 @@ const ResearchHelpsForm = ({ onSuccess } : ResearchHelpsFormProps) => {
                       {...field}
                       id="research-helps-affiliation"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your institution/organization"
+                      placeholder="Enter your institution or organization"
                       autoComplete="organization"
                       className="text-xs xl:text-sm"
                     />
@@ -165,13 +165,13 @@ const ResearchHelpsForm = ({ onSuccess } : ResearchHelpsFormProps) => {
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel htmlFor="degree-title">
+                    <FieldLabel htmlFor="research-helps-degree">
                       Degree
                       <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Degree" className="text-xs xl:text-sm" />
+                        <SelectTrigger id="research-helps-degree" className="w-full" aria-invalid={fieldState.invalid}>
+                          <SelectValue placeholder="Select your degree" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectItem key='Bachelor' value='Bachelor' className="text-xs xl:text-sm">
@@ -388,8 +388,8 @@ const ResearchHelpsForm = ({ onSuccess } : ResearchHelpsFormProps) => {
                       <SelectSkeleton />
                     ) : (
                       <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a category" className="text-xs xl:text-sm" />
+                        <SelectTrigger id="research-helps-category" className="w-full" aria-invalid={fieldState.invalid}>
+                          <SelectValue placeholder="Select a research category" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
                           {data?.map((category) => (
@@ -418,7 +418,7 @@ const ResearchHelpsForm = ({ onSuccess } : ResearchHelpsFormProps) => {
                       {...field}
                       id="research-helps-minor"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Specify your minor research area"
+                      placeholder="Enter your minor research area"
                       autoComplete="off"
                       className="text-xs xl:text-sm"
                     />
@@ -443,15 +443,16 @@ const ResearchHelpsForm = ({ onSuccess } : ResearchHelpsFormProps) => {
       <Field data-invalid={fieldState.invalid}>
         <FieldLabel htmlFor="research-helps-contribution">
           How can you contribute?
+          <span className="text-red-500">*</span>
         </FieldLabel>
         <Select
           onValueChange={(val) => {
-            field.onChange(val); // sets to "I can contribute in another way"
+            field.onChange(val);
           }}
           value={isOther ? "I can contribute in another way" : field.value}
         >
-          <SelectTrigger>
-            <SelectValue placeholder="Select a contribution" />
+          <SelectTrigger id="research-helps-contribution" className="w-full" aria-invalid={fieldState.invalid}>
+            <SelectValue placeholder="Select how you can contribute" className="text-xs xl:text-sm" />
           </SelectTrigger>
           <SelectContent>
             {typeofContributions?.map((type) => (
@@ -463,15 +464,22 @@ const ResearchHelpsForm = ({ onSuccess } : ResearchHelpsFormProps) => {
         </Select>
 
         {isOther && (
-          <Input
-            id="research-helps-contribution-other"
-            placeholder="Explain how you can contribute to this research"
-            onChange={(e) => field.onChange(e.target.value)}
-            onBlur={field.onBlur}
-            ref={field.ref}
-            value={isOther && field.value !== "I can contribute in another way" ? field.value : ""}
-            className="text-xs xl:text-sm mt-2"
-          />
+          <>
+            <FieldLabel htmlFor="research-helps-contribution-other" className="mt-2">
+              Contribution details
+              <span className="text-red-500">*</span>
+            </FieldLabel>
+            <Input
+              id="research-helps-contribution-other"
+              aria-invalid={fieldState.invalid}
+              placeholder="Explain how you can contribute to this research"
+              onChange={(e) => field.onChange(e.target.value)}
+              onBlur={field.onBlur}
+              ref={field.ref}
+              value={isOther && field.value !== "I can contribute in another way" ? field.value : ""}
+              className="text-xs xl:text-sm"
+            />
+          </>
         )}
 
         {fieldState.invalid && <FieldError errors={[fieldState.error]} />}

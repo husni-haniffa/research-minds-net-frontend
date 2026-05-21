@@ -70,7 +70,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                       <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
+                        <SelectTrigger id="research-idea-title" className="w-full" aria-invalid={fieldState.invalid}>
                           <SelectValue placeholder="Select your title" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
@@ -95,7 +95,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-idea-name">
-                      Enter your full name
+                      Full Name
                       <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
@@ -153,7 +153,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                       {...field}
                       id="research-idea-affiliation"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your university or organization"
+                      placeholder="Enter your institution or organization"
                       autoComplete="organization"
                       className="text-xs xl:text-sm"
                     />
@@ -346,8 +346,8 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                       <SelectSkeleton />
                     ) : (
                       <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
-                            <SelectValue placeholder="Select a category" className="text-xs xl:text-sm" />
+                        <SelectTrigger id="research-idea-category" className="w-full" aria-invalid={fieldState.invalid}>
+                            <SelectValue placeholder="Select a research category" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
                           {data?.map((category) => (
@@ -376,7 +376,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                       {...field}
                       id="research-idea-minor"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Specify your minor research area"
+                      placeholder="Enter your minor research area"
                       autoComplete="off"
                       className="text-xs xl:text-sm"
                     />
@@ -429,12 +429,12 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
         </FieldLabel>
         <Select
           onValueChange={(val) => {
-            field.onChange(val); // sets to "I can contribute in another way"
+            field.onChange(val);
           }}
           value={isOther ? "I can contribute in another way" : field.value}
         >
-          <SelectTrigger>
-            <SelectValue placeholder="Select a contribution" />
+          <SelectTrigger id="research-idea-contribution" className="w-full" aria-invalid={fieldState.invalid}>
+            <SelectValue placeholder="Select how you can contribute" className="text-xs xl:text-sm" />
           </SelectTrigger>
           <SelectContent>
             {typeofContributions?.map((type) => (
@@ -446,15 +446,22 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
         </Select>
 
         {isOther && (
-          <Input
-            id="research-idea-contribution-other"
-            placeholder="Explain how you can contribute to this research"
-            onChange={(e) => field.onChange(e.target.value)}
-            onBlur={field.onBlur}
-            ref={field.ref}
-            value={isOther && field.value !== "I can contribute in another way" ? field.value : ""}
-            className="text-xs xl:text-sm mt-2"
-          />
+          <>
+            <FieldLabel htmlFor="research-idea-contribution-other" className="mt-2">
+              Contribution details
+              <span className="text-red-500">*</span>
+            </FieldLabel>
+            <Input
+              id="research-idea-contribution-other"
+              aria-invalid={fieldState.invalid}
+              placeholder="Explain how you can contribute to this research"
+              onChange={(e) => field.onChange(e.target.value)}
+              onBlur={field.onBlur}
+              ref={field.ref}
+              value={isOther && field.value !== "I can contribute in another way" ? field.value : ""}
+              className="text-xs xl:text-sm"
+            />
+          </>
         )}
 
         {fieldState.invalid && <FieldError errors={[fieldState.error]} />}

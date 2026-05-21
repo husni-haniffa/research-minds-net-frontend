@@ -70,7 +70,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                       <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger>
+                      <SelectTrigger id="research-funding-title" className="w-full" aria-invalid={fieldState.invalid}>
                         <SelectValue placeholder="Select your title" className="text-xs xl:text-sm" />
                       </SelectTrigger>
                       <SelectContent>
@@ -95,14 +95,14 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-name">
-                      Enter your full name
+                      Full Name
                       <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-funding-name"
                       aria-invalid={fieldState.invalid}
-                      placeholder="E P D N Thilakarathne"
+                      placeholder="John Doe"
                       autoComplete="name"
                       className="text-xs xl:text-sm"
                     />
@@ -152,7 +152,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                       {...field}
                       id="research-funding-affiliation"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your university or organization"
+                      placeholder="Enter your institution or organization"
                       autoComplete="organization"
                       className="text-xs xl:text-sm"
                     />
@@ -172,7 +172,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                       <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
+                        <SelectTrigger id="research-funding-degree" className="w-full" aria-invalid={fieldState.invalid}>
                           <SelectValue placeholder="Select your degree" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
@@ -220,7 +220,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                       {...field}
                       id="research-funding-mobile"
                       aria-invalid={fieldState.invalid}
-                      placeholder="0774677023"
+                      placeholder="0771234567"
                       autoComplete="tel"
                       className="text-xs xl:text-sm"
                     />
@@ -244,7 +244,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                       {...field}
                       id="research-funding-whatsapp"
                       aria-invalid={fieldState.invalid}
-                      placeholder="0774677023"
+                      placeholder="0771234567"
                       autoComplete="tel"
                       className="text-xs xl:text-sm"
                     />
@@ -389,8 +389,8 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                       <SelectSkeleton />
                     ) : (
                       <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a category" className="text-xs xl:text-sm" />
+                        <SelectTrigger id="research-funding-category" className="w-full" aria-invalid={fieldState.invalid}>
+                          <SelectValue placeholder="Select a research category" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
                           {data?.map((category) => (
@@ -419,7 +419,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                       {...field}
                       id="research-funding-minor"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Specify your minor research area"
+                      placeholder="Enter your minor research area"
                       autoComplete="off"
                       className="text-xs xl:text-sm"
                     />
@@ -440,6 +440,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-funding-amount">
                       Funding Amount
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                     type="number"
@@ -468,15 +469,16 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
       <Field data-invalid={fieldState.invalid}>
         <FieldLabel htmlFor="research-funding-contribution">
           How can you contribute?
+          <span className="text-red-500">*</span>
         </FieldLabel>
         <Select
           onValueChange={(val) => {
-            field.onChange(val); // sets to "I can contribute in another way"
+            field.onChange(val);
           }}
           value={isOther ? "I can contribute in another way" : field.value}
         >
-          <SelectTrigger>
-            <SelectValue placeholder="Select contribution" />
+          <SelectTrigger id="research-funding-contribution" className="w-full" aria-invalid={fieldState.invalid}>
+            <SelectValue placeholder="Select how you can contribute" className="text-xs xl:text-sm" />
           </SelectTrigger>
           <SelectContent>
             {typeofContributions?.map((type) => (
@@ -488,15 +490,22 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
         </Select>
 
         {isOther && (
-          <Input
-            id="research-funding-contribution-other"
-            placeholder="Explain how you can contribute to this research"
-            onChange={(e) => field.onChange(e.target.value)}
-            onBlur={field.onBlur}
-            ref={field.ref}
-            value={isOther && field.value !== "I can contribute in another way" ? field.value : ""}
-            className="text-xs xl:text-sm mt-2"
-          />
+          <>
+            <FieldLabel htmlFor="research-funding-contribution-other" className="mt-2">
+              Contribution details
+              <span className="text-red-500">*</span>
+            </FieldLabel>
+            <Input
+              id="research-funding-contribution-other"
+              aria-invalid={fieldState.invalid}
+              placeholder="Explain how you can contribute to this research"
+              onChange={(e) => field.onChange(e.target.value)}
+              onBlur={field.onBlur}
+              ref={field.ref}
+              value={isOther && field.value !== "I can contribute in another way" ? field.value : ""}
+              className="text-xs xl:text-sm"
+            />
+          </>
         )}
 
         {fieldState.invalid && <FieldError errors={[fieldState.error]} />}

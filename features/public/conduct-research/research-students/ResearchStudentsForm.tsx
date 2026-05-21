@@ -70,7 +70,7 @@ const ResearchStudentsForm = ({ onSuccess } : ResearchStudentsFormProps) => {
                                            <span className="text-red-500">*</span>
                                          </FieldLabel>
                                          <Select onValueChange={field.onChange} value={field.value}>
-                                           <SelectTrigger>
+                                           <SelectTrigger id="research-students-title" className="w-full" aria-invalid={fieldState.invalid}>
                                              <SelectValue placeholder="Select your title" className="text-xs xl:text-sm" />
                                            </SelectTrigger>
                                            <SelectContent>
@@ -95,7 +95,7 @@ const ResearchStudentsForm = ({ onSuccess } : ResearchStudentsFormProps) => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-students-name">
-                      Enter your full name
+                      Full Name
                       <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
@@ -153,7 +153,7 @@ const ResearchStudentsForm = ({ onSuccess } : ResearchStudentsFormProps) => {
                       {...field}
                       id="research-students-affiliation"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your institution/organization"
+                      placeholder="Enter your institution or organization"
                       autoComplete="organization"
                       className="text-xs xl:text-sm"
                     />
@@ -169,12 +169,13 @@ const ResearchStudentsForm = ({ onSuccess } : ResearchStudentsFormProps) => {
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel htmlFor="degree-title">
+                    <FieldLabel htmlFor="research-students-degree">
                       Degree
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Degree" className="text-xs xl:text-sm" />
+                        <SelectTrigger id="research-students-degree" className="w-full" aria-invalid={fieldState.invalid}>
+                          <SelectValue placeholder="Select your degree" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectItem key='Bachelor' value='Bachelor' className="text-xs xl:text-sm">
@@ -216,7 +217,7 @@ const ResearchStudentsForm = ({ onSuccess } : ResearchStudentsFormProps) => {
                       {...field}
                       id="research-students-mobile"
                       aria-invalid={fieldState.invalid}
-                      placeholder="07XXXXXXXX"
+                      placeholder="0771234567"
                       autoComplete="tel"
                       className="text-xs xl:text-sm"
                     />
@@ -258,6 +259,7 @@ const ResearchStudentsForm = ({ onSuccess } : ResearchStudentsFormProps) => {
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-students-email">
                       Email Address
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
@@ -382,8 +384,8 @@ const ResearchStudentsForm = ({ onSuccess } : ResearchStudentsFormProps) => {
                       <SelectSkeleton />
                     ) : (
                       <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a category" className="text-xs xl:text-sm" />
+                        <SelectTrigger id="research-students-category" className="w-full" aria-invalid={fieldState.invalid}>
+                          <SelectValue placeholder="Select a research category" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
                           {data?.map((category) => (
@@ -412,7 +414,7 @@ const ResearchStudentsForm = ({ onSuccess } : ResearchStudentsFormProps) => {
                       {...field}
                       id="research-students-minor"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Specify your minor research area"
+                      placeholder="Enter your minor research area"
                       autoComplete="off"
                       className="text-xs xl:text-sm"
                     />
@@ -431,14 +433,15 @@ const ResearchStudentsForm = ({ onSuccess } : ResearchStudentsFormProps) => {
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel htmlFor="research-location-description">
-                      Where would like to conduct research
+                    <FieldLabel htmlFor="research-students-location">
+                      Where would you like to conduct research?
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
-                      id="research-location-description"
+                      id="research-students-location"
                       aria-invalid={fieldState.invalid}
-                      placeholder="University of Moratuwa"
+                      placeholder="e.g. University of Moratuwa"
                       autoComplete="on"
                       className="text-xs xl:text-sm"
                     />
