@@ -33,7 +33,8 @@ const PlacementsTable = ({ search }: { search: string }) => {
   if (!data || data.length === 0) return <p className='flex items-center justify-center font-semibold text-lg'>No applications submitted yet</p>
   
   const filtered = data?.filter((placement) =>
-      placement.name.toLowerCase().includes(search.toLowerCase())
+    placement.name?.toLowerCase().includes(search.toLowerCase()) ||
+    placement.affiliationType?.toLowerCase().includes(search.toLowerCase())
   )
 
   if (!filtered?.length) return <p className='flex items-center justify-center text-base'>Application not found</p>
@@ -45,6 +46,7 @@ const PlacementsTable = ({ search }: { search: string }) => {
               <TableRow>
                   <TableHead>Name</TableHead>
                   <TableHead>Designation</TableHead>
+                  <TableHead>Affiliation Type</TableHead>
                   <TableHead>Affiliation</TableHead>
                   <TableHead>Research Area</TableHead>
                   <TableHead>Applied on</TableHead>
@@ -60,6 +62,7 @@ const PlacementsTable = ({ search }: { search: string }) => {
                                           {idea.name}
                                         </TableCell>
                     <TableCell>{idea.designation}</TableCell>
+                <TableCell>{idea.affiliationType}</TableCell>
                     <TableCell>{idea.affiliation}</TableCell>
                     <TableCell>{idea.categoryId.name}</TableCell>
                     <TableCell>{formateDate(new Date(idea.updatedAt))}</TableCell>

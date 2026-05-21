@@ -30,6 +30,7 @@ const ResearchPlacementsForm = ({ onSuccess } : ResearchPlacementsFormProps) => 
       researchgate: "https://researchgate.net/profile/yourprofile",
       scholar: "https://scholar.google.com/citations?user=yourid",
       designation: "",
+      affiliationType: "",
       affiliation: "",
       categoryId: "",
       minorResearchIdea: "",
@@ -72,10 +73,10 @@ const ResearchPlacementsForm = ({ onSuccess } : ResearchPlacementsFormProps) => 
                           <SelectValue placeholder="Title" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem key='Mr' value='Mr' className="text-xs xl:text-sm">
+                            <SelectItem key='mr' value='Mr' className="text-xs xl:text-sm">
                               Mr
                             </SelectItem>
-                             <SelectItem key='Miss' value='Miss' className="text-xs xl:text-sm">
+                             <SelectItem key='miss' value='Miss' className="text-xs xl:text-sm">
                               Miss
                             </SelectItem>
                         </SelectContent>
@@ -134,8 +135,39 @@ const ResearchPlacementsForm = ({ onSuccess } : ResearchPlacementsFormProps) => 
               </div>
               
               
-             
-                 <Controller
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Controller
+                name="affiliationType"
+                control={form.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor="research-placements-affiliation type">
+                      Select Affiliation Type
+                    </FieldLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select one" className="text-xs xl:text-sm" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem key='company' value='Company' className="text-xs xl:text-sm">
+                          Company
+                        </SelectItem>
+                        <SelectItem key='organization' value='Organization' className="text-xs xl:text-sm">
+                          Organization
+                        </SelectItem>
+                        <SelectItem key='individual' value='Individual' className="text-xs xl:text-sm">
+                          Individual
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+
+              <Controller
                 name="affiliation"
                 control={form.control}
                 render={({ field, fieldState }) => (
@@ -157,6 +189,8 @@ const ResearchPlacementsForm = ({ onSuccess } : ResearchPlacementsFormProps) => 
                   </Field>
                 )}
               />
+                </div>
+                
          
               
 

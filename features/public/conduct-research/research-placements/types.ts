@@ -56,6 +56,12 @@ export const formSchema = z.object({
         .min(2, "Designation required")
         .max(250, "Designation too long"),
 
+    affiliationType: z
+        .string()
+        .trim()
+        .min(1, "Affiliation Type is required")
+        .max(100, "Affiliation Type long"),
+
     affiliation: z
         .string()
         .trim()
@@ -118,6 +124,7 @@ export interface ResearchPlacements {
     researchgate: string;
     scholar: string;
     designation: string;
+    affiliationType: string;
     affiliation: string;
     categoryId: {
         _id: string
