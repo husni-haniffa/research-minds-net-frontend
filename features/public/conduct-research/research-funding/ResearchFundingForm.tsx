@@ -33,7 +33,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
       affiliation: "",
       degree: "",
       categoryId: "",
-      minorResearchAreaForFunding: "",
+      minorResearchArea: "",
       fundingAmount: "",
       howCanYouContribute: ""
     },
@@ -407,7 +407,7 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
               />
 
               <Controller
-                name="minorResearchAreaForFunding"
+                name="minorResearchArea"
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>

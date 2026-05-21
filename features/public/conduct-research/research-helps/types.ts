@@ -13,7 +13,7 @@ export const formSchema = z.object({
         .string()
         .trim()
         .min(1, "Full name is required")
-        .max(200, "Name is too long"),
+        .max(255, "Name is too long"),
 
     mobile: z
         .string()
@@ -65,7 +65,6 @@ export const formSchema = z.object({
         .min(1, "Affiliation is required")
         .max(200, "Affiliation is too long"),
 
-
     degree: z
         .string()
         .min(1, "Please select a degree"),
@@ -77,15 +76,16 @@ export const formSchema = z.object({
     minorResearchArea: z
         .string()
         .trim()
-        .min(1, "Please describe your research idea")
-        .max(5000, "Research idea is too long"),
+        .min(1, "Please enter a short summary")
+        .max(2500, "Summary is too long"),
 
     howCanYouContribute: z
         .string()
         .trim()
         .min(1, "Please explain your contribution")
-        .max(1000, "Contribution is too long"),
+        .max(2500, "Contribution is too long"),
 });
+
 
 export const typeofContributions = [
     {

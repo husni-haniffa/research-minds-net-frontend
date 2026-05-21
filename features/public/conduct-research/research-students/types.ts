@@ -4,36 +4,36 @@ const phoneRegex = /^\d{10}$/;
 
 export const formSchema = z.object({
     title: z
-           .string()
-           .trim()
-           .min(1, "Please select a title")
-           .max(20, "Title is too long"),
-   
-       name: z
-           .string()
-           .trim()
-           .min(1, "Full name is required")
-           .max(200, "Name is too long"),
-   
-       mobile: z
-           .string()
-           .regex(phoneRegex, "Enter a valid mobile number"),
-   
-       whatsapp: z
-           .string()
-           .regex(phoneRegex, "Enter a valid WhatsApp number"),
-   
-       email: z
-           .string()
-           .trim()
-           .email("Enter a valid email address")
-           .max(255, "Email is too long"),
-   
-       linkedin: z
-           .string()
-           .trim()
-           .url("Enter a valid LinkedIn URL")
-           .or(z.literal("")),
+        .string()
+        .trim()
+        .min(1, "Please select a title")
+        .max(20, "Title is too long"),
+
+    name: z
+        .string()
+        .trim()
+        .min(1, "Full name is required")
+        .max(255, "Name is too long"),
+
+    mobile: z
+        .string()
+        .regex(phoneRegex, "Enter a valid mobile number"),
+
+    whatsapp: z
+        .string()
+        .regex(phoneRegex, "Enter a valid WhatsApp number"),
+
+    email: z
+        .string()
+        .trim()
+        .email("Enter a valid email address")
+        .max(255, "Email is too long"),
+
+    linkedin: z
+        .string()
+        .trim()
+        .url("Enter a valid LinkedIn URL")
+        .or(z.literal("")),
 
 
     orcid: z
@@ -65,6 +65,7 @@ export const formSchema = z.object({
         .trim()
         .min(1, "Affiliation is required")
         .max(200, "Affiliation is too long"),
+
     degree: z
         .string()
         .min(1, "Please select a degree"),
@@ -76,15 +77,16 @@ export const formSchema = z.object({
     minorResearchArea: z
         .string()
         .trim()
-        .min(1, "Please describe your research idea")
-        .max(5000, "Research idea is too long"),
+        .min(1, "Please enter a short summary")
+        .max(2500, "Summary is too long"),
 
     whereWouldYouLikeToConductResearch: z
         .string()
         .trim()
         .min(1, "Please describe in detail")
-        .max(2500, "Too long"),
+        .max(2500, "Conduct research location too long"),
 });
+
 
 export interface ResearchStudents {
     _id: string

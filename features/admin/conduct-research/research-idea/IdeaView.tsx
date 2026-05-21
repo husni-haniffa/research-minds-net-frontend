@@ -34,7 +34,7 @@ const IdeaView = ({data} : {data: ResearchIdea}) => {
             <div>
                 <div className='mt-1 mb-2'>
                     <h6 className='font-bold text-slate-800 text-base'>Minor Research Idea</h6>
-                    <p className='text-sm leading-relaxed'>{data.minorResearchIdea}</p>
+                    <p className='text-sm leading-relaxed'>{data.minorResearchArea}</p>
                 </div>
                 <div className='mt-1 mb-2'>
                     <h6 className='font-bold text-slate-800 text-base'>Research Idea</h6>

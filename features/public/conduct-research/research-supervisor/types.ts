@@ -4,36 +4,36 @@ const phoneRegex = /^07\d{8}$/;
 
 export const formSchema = z.object({
     title: z
-           .string()
-           .trim()
-           .min(1, "Please select a title")
-           .max(20, "Title is too long"),
-   
-       name: z
-           .string()
-           .trim()
-           .min(1, "Full name is required")
-           .max(200, "Name is too long"),
-   
-       mobile: z
-           .string()
-           .regex(phoneRegex, "Enter a valid mobile number"),
-   
-       whatsapp: z
-           .string()
-           .regex(phoneRegex, "Enter a valid WhatsApp number"),
-   
-       email: z
-           .string()
-           .trim()
-           .email("Enter a valid email address")
-           .max(255, "Email is too long"),
-   
-       linkedin: z
-           .string()
-           .trim()
-           .url("Enter a valid LinkedIn URL")
-           .or(z.literal("")),
+        .string()
+        .trim()
+        .min(1, "Please select a title")
+        .max(20, "Title is too long"),
+
+    name: z
+        .string()
+        .trim()
+        .min(1, "Full name is required")
+        .max(200, "Name is too long"),
+
+    mobile: z
+        .string()
+        .regex(phoneRegex, "Enter a valid mobile number"),
+
+    whatsapp: z
+        .string()
+        .regex(phoneRegex, "Enter a valid WhatsApp number"),
+
+    email: z
+        .string()
+        .trim()
+        .email("Enter a valid email address")
+        .max(255, "Email is too long"),
+
+    linkedin: z
+        .string()
+        .trim()
+        .url("Enter a valid LinkedIn URL")
+        .or(z.literal("")),
 
 
     orcid: z
@@ -76,8 +76,8 @@ export const formSchema = z.object({
     minorResearchIdea: z
         .string()
         .trim()
-        .min(1, "Please describe your research idea")
-        .max(5000, "Research idea is too long"),
+        .min(1, "Please enter a short summary")
+        .max(2500, "Summary is too long"),
 
     noOfStudents: z
         .string()
@@ -87,9 +87,8 @@ export const formSchema = z.object({
 
     motivation: z
         .string()
-        .max(5000, "Too long")
+        .max(5000, "Motivation is too long")
         .or(z.literal("")),
-
 
     howCanYouContribute: z
         .string()

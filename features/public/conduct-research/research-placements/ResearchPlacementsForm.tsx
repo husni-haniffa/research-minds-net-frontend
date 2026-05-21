@@ -33,7 +33,7 @@ const ResearchPlacementsForm = ({ onSuccess } : ResearchPlacementsFormProps) => 
       affiliationType: "",
       affiliation: "",
       categoryId: "",
-      minorResearchIdea: "",
+      minorResearchArea: "",
       howCanYouContribute: ""
     },
   })
@@ -402,7 +402,7 @@ const ResearchPlacementsForm = ({ onSuccess } : ResearchPlacementsFormProps) => 
               />
 
               <Controller
-                name="minorResearchIdea"
+                name="minorResearchArea"
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>

@@ -33,7 +33,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
       designation: "",
       affiliation: "",
       categoryId: "",
-      minorResearchIdea: "",
+      minorResearchArea: "",
       researchIdea: "",
       howCanYouContribute: ""
     },
@@ -102,7 +102,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
                       {...field}
                       id="research-idea-name"
                       aria-invalid={fieldState.invalid}
-                      placeholder="E P D N Thilakarathne"
+                      placeholder="John Doe"
                       autoComplete="name"
                       className="text-xs xl:text-sm"
                     />
@@ -364,7 +364,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
               />
 
               <Controller
-                name="minorResearchIdea"
+                name="minorResearchArea"
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
