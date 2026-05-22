@@ -1,4 +1,4 @@
-import { deleteResearchIdea } from "@/api/research-idea";
+import { deleteResearchIdea } from "@/api/conduct-research";
 import { useResearchIdea } from "@/features/public/conduct-research/research-idea/idea.hooks";
 export { useResearchIdea }
 import { useAuth } from "@clerk/nextjs";

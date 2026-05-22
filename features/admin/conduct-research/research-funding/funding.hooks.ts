@@ -1,4 +1,4 @@
-import { deleteResearchFunding } from "@/api/research-funding";
+import { deleteResearchFunding } from "@/api/conduct-research";
 import { useResearchFunding } from "@/features/public/conduct-research/research-funding/funding.hooks";
 import { useAuth } from "@clerk/nextjs";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
