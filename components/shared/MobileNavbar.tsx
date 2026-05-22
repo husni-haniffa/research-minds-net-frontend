@@ -6,8 +6,9 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { navLinks } from "@/lib/navLinks";
 import { usePathname } from "next/navigation";
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, SignOutButton } from '@clerk/nextjs'
 import { useCheckRole } from "@/utils/checkRole";
+import React from "react";
 
 // MobileNavbar
 const MobileNavbar = () => {
@@ -38,34 +39,36 @@ const MobileNavbar = () => {
             className="absolute top-16 left-0 right-0 z-40 bg-white border-b border-slate-100 shadow-lg shadow-slate-200/50">
 
             <div className="container py-4 flex flex-col gap-1">
-
               {/* Nav links */}
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    pathname === link.href
-                      ? "bg-blue-50 text-blue-600 font-semibold"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                  }`}>
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link, index) => (
+                <React.Fragment key={link.name}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${pathname === link.href
+                        ? "bg-blue-50 text-blue-600 font-semibold"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                      }`}
+                  >
+                    {link.name}
+                  </Link>
 
-              <SignedIn>
-                <Link
-                  href="/user/submissions"
-                  onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    pathname === "/user/submissions"
-                      ? "bg-blue-50 text-blue-600 font-semibold"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                  }`}>
-                  Submissions
-                </Link>
-              </SignedIn>
+                  {index === 0 && (
+                    <SignedIn>
+                      <Link
+                        href="/user/submissions"
+                        onClick={() => setIsOpen(false)}
+                        className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${pathname === "/user/submissions"
+                            ? "bg-blue-50 text-blue-600 font-semibold"
+                            : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                          }`}
+                      >
+                        Submissions
+                      </Link>
+                    </SignedIn>
+                  )}
+                </React.Fragment>
+              ))}
 
               {/* Divider */}
               <div className="h-px bg-slate-100 my-2" />
@@ -73,28 +76,54 @@ const MobileNavbar = () => {
               {/* Actions */}
               <div className="flex flex-col gap-2 px-1 pb-2">
                 {isAdmin && (
-                  <Button asChild size="sm"  className="font-semibold w-full bg-slate-900 hover:bg-slate-800 text-white border-none">
-                    <Link href="/admin" onClick={() => setIsOpen(false)}>Admin</Link>
+                  <Button
+                    asChild
+                    size="sm"
+                    className="font-semibold w-full bg-slate-900 hover:bg-slate-800 text-white border-none"
+                  >
+                    <Link href="/admin" onClick={() => setIsOpen(false)}>
+                      Admin
+                    </Link>
                   </Button>
                 )}
+
                 <SignedOut>
-                  <Button asChild size="sm" className="font-semibold w-full bg-blue-600 hover:bg-blue-500 text-white border-none">
-                    <Link href="/sign-in?redirect_url=/user/submissions" onClick={() => setIsOpen(false)}>
+                  <Button
+                    asChild
+                    size="sm"
+                    className="font-semibold w-full bg-blue-600 hover:bg-blue-500 text-white border-none"
+                  >
+                    <Link
+                      href="/sign-in?redirect_url=/user/submissions"
+                      onClick={() => setIsOpen(false)}
+                    >
                       Submit Your Paper
                     </Link>
                   </Button>
-                  <Button asChild size="sm" className="font-semibold w-full bg-slate-900 hover:bg-slate-800 text-white border-none">
-                    <Link href="/sign-in" onClick={() => setIsOpen(false)}>Sign In</Link>
+
+                  <Button asChild size="sm" variant="secondary">
+                    <Link href="/sign-in" onClick={() => setIsOpen(false)}>
+                      Sign In
+                    </Link>
+                  </Button>
+
+                  <Button
+                    asChild
+                    size="sm"
+                    className="font-semibold w-full bg-slate-900 hover:bg-slate-800 text-white border-none"
+                  >
+                    <Link href="/sign-up" onClick={() => setIsOpen(false)}>
+                      Sign Up
+                    </Link>
                   </Button>
                 </SignedOut>
+
                 <SignedIn>
-                  <div className="flex items-center gap-3 px-4 py-2">
-                    <UserButton />
-                    <span className="text-sm text-slate-500">My Account</span>
-                  </div>
+                  <Button size="sm" asChild className="font-semibold">
+                    <SignOutButton />
+                  </Button>
                 </SignedIn>
               </div>
-
             </div>
           </motion.div>
         )}

@@ -1,7 +1,7 @@
 import {
     createResearchPlacement,
     fetchResearchPlacement,
-} from "@/api/research-placement"
+} from "@/api/conduct-research"
 
 export {
     createResearchPlacement,

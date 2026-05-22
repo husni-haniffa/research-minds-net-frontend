@@ -1,4 +1,4 @@
-import { deleteResearchSupervisor } from "@/api/research-supervisor";
+import { deleteResearchSupervisor } from "@/api/conduct-research";
 import { useResearchSupervisor } from "@/features/public/conduct-research/research-supervisor/supervisor.hooks";
 export { useResearchSupervisor }
 import { useAuth } from "@clerk/nextjs";

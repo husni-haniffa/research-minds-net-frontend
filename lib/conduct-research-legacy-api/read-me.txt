@@ -1,0 +1,13 @@
+This folder contains the old, clean, separated APIs for the Conduct Research features, including:
+- Idea
+- Funding
+- Supervisor
+- Placements
+- Student
+- Help
+
+The reason I am placing them here is because the API count must remain under 12 in order to run on the Hobby plan, since the client has not authorized upgrading to the Pro version.
+
+For now, I am moving all 6 separated files into a single file temporarily. Later, this can be separated and refactored again when needed.
+
+Temporary file name is conduct-research in api folder
