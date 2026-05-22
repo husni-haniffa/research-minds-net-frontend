@@ -1,7 +1,7 @@
 import {
     createResearchStudent,
     fetchResearchStudent,
-} from "@/api/research-student"
+} from "@/api/conduct-research"
 
 export {
     createResearchStudent,

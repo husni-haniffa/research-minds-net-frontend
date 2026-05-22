@@ -55,13 +55,14 @@ export const howWeSupport = [
         icon: BookOpen,
         ui: "text-emerald-500 w-4 h-4 sm:w-5 sm:h-5",
         title: "Publications",
-        description: "A dedicated space for sharing academic work and making research accessible to the wider university community.",
+        description:
+            "A platform for sharing academic and research-related content within the university community. This section is intended for academic showcases and educational content only — not for publishing peer-reviewed academic journals.",
         features: [
-            "Research abstracts and articles",
-            "Presentations and academic showcases",
-            "Review articles and academic features",
-            "Book chapters and digital publications",
-            "Visibility and access for published research"
+            "Magazine articles and academic features",
+            "Three Minute Thesis (3MT) presentations",
+            "Research posters and visual showcases",
+            "Student and faculty academic highlights",
+            "Accessible visibility for university research content"
         ]
     }
 ];

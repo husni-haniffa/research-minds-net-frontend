@@ -56,7 +56,10 @@ const CreateSubmissionForm = ({ onSuccess } : CreateSubmissionFormProps) => {
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel>Select Research Type</FieldLabel>
+                    <FieldLabel>
+                      Select Research Type
+                      <span className="text-red-500">*</span>
+                    </FieldLabel>
                      {researchTypesLoading ? <SelectSkeleton/> : 
                         <Select onValueChange={field.onChange} value={field.value}>
                         <SelectTrigger>
@@ -82,6 +85,7 @@ const CreateSubmissionForm = ({ onSuccess } : CreateSubmissionFormProps) => {
                     <Field data-invalid={fieldState.invalid}>
                         <FieldLabel htmlFor="create-submission-title-label">
                           Enter Research Title
+                        <span className="text-red-500">*</span>
                         </FieldLabel>
                         <Input
                             {...field}
@@ -104,6 +108,7 @@ const CreateSubmissionForm = ({ onSuccess } : CreateSubmissionFormProps) => {
                     <Field data-invalid={fieldState.invalid}>
                         <FieldLabel htmlFor="create-submission-abstract-title">
                           Enter Research Submission
+                        <span className="text-red-500">*</span>
                         </FieldLabel>
                         <Textarea
                             {...field}
@@ -126,7 +131,10 @@ const CreateSubmissionForm = ({ onSuccess } : CreateSubmissionFormProps) => {
                   control={form.control}
                   render={({ field, fieldState }) => (
                     <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel>Enter Keywords</FieldLabel>
+                      <FieldLabel>
+                        Enter Keywords
+                        <span className="text-red-500">*</span>
+                      </FieldLabel>
                       <KeywordsInput
                         value={field.value}
                         onChange={field.onChange}
@@ -142,7 +150,10 @@ const CreateSubmissionForm = ({ onSuccess } : CreateSubmissionFormProps) => {
                   control={form.control}
                   render={({ field, fieldState }) => (
                     <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel>Upload Research Paper</FieldLabel>
+                      <FieldLabel>
+                        Upload Research Paper
+                        <span className="text-red-500">*</span>
+                      </FieldLabel>
                         <Input
                           key={field.value ? "file-set" : "file-empty"}
                           type="file"
@@ -161,7 +172,10 @@ const CreateSubmissionForm = ({ onSuccess } : CreateSubmissionFormProps) => {
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel>Select Research Category</FieldLabel>
+                    <FieldLabel>
+                      Select Research Category
+                      <span className="text-red-500">*</span>
+                    </FieldLabel>
                      {isLoading ? <SelectSkeleton/> : 
                         <Select onValueChange={field.onChange} value={field.value}>
                         <SelectTrigger>

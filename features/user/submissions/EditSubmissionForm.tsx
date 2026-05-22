@@ -74,7 +74,7 @@ const EditSubmissionForm = ({ submissionId, onSuccess } : EditSubmissionFormProp
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel>Select Research Type</FieldLabel>
                      {researchTypesLoading ? <SelectSkeleton/> : 
-                        <Select onValueChange={field.onChange} value={field.value}>
+                        <Select onValueChange={field.onChange} value={field.value} key={field.value}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select a Research Type" className="text-xs xl:text-sm" />
                         </SelectTrigger>
@@ -178,7 +178,7 @@ const EditSubmissionForm = ({ submissionId, onSuccess } : EditSubmissionFormProp
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel>Select Research Category</FieldLabel>
                     {categoriesLoading ? <SelectSkeleton/> :     
-                      <Select onValueChange={field.onChange} value={field.value}>
+                      <Select onValueChange={field.onChange} value={field.value} key={field.value}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select a category" className="text-xs xl:text-sm"/>
                         </SelectTrigger>
