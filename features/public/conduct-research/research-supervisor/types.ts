@@ -73,7 +73,7 @@ export const formSchema = z.object({
         .string()
         .min(1, "Please select a category"),
 
-    minorResearchIdea: z
+    minorResearchArea: z
         .string()
         .trim()
         .min(1, "Please enter a short summary")
@@ -138,7 +138,7 @@ export interface ResearchSupervisor {
         _id: string
         name: string
     }
-    minorResearchIdea: string;
+    minorResearchArea: string;
     noOfStudents: string;
     motivation: string
     howCanYouContribute: string;

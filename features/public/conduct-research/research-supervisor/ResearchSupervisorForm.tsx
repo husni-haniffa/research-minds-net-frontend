@@ -33,7 +33,7 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
       affiliation: "",
       degree: "",
       categoryId: "",
-      minorResearchIdea: "",
+      minorResearchArea: "",
       noOfStudents: "",
       motivation: "",
       howCanYouContribute: ""
@@ -407,7 +407,7 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
               />
 
               <Controller
-                name="minorResearchIdea"
+                name="minorResearchArea"
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
