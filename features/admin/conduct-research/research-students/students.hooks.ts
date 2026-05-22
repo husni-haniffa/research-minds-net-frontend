@@ -1,4 +1,4 @@
-import { deleteResearchStudent } from "@/api/research-student";
+import { deleteResearchStudent } from "@/api/conduct-research";
 import { useResearchStudents } from "@/features/public/conduct-research/research-students/students.hooks";
 export { useResearchStudents }
 import { useAuth } from "@clerk/nextjs";

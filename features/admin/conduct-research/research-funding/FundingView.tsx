@@ -33,7 +33,7 @@ const FundingView = ({ data }: {data: ResearchFunding}) => {
             <div>
                 <div className='mt-1 mb-2'>
                     <h6 className='font-bold text-slate-800 text-base'>Minor Research Area</h6>
-                    <p className='text-sm leading-relaxed'>{data.minorResearchAreaForFunding}</p>
+                    <p className='text-sm leading-relaxed'>{data.minorResearchArea}</p>
                 </div>
             </div>
 

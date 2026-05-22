@@ -25,16 +25,17 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
       mobile: "",
       whatsapp: "",
       email: "",
-      linkedin: "https://linkedin.com/in/username",
-      orcid: "https://orcid.org/yourid",
-      researchgate: "https://researchgate.net/profile/yourprofile",
-      scholar: "https://scholar.google.com/citations?user=yourid",
+      linkedin: "",
+      orcid: "",
+      researchgate: "",
+      scholar: "",
       designation: "",
       affiliation: "",
       degree: "",
       categoryId: "",
-      minorResearchIdea: "",
+      minorResearchArea: "",
       noOfStudents: "",
+      motivation: "",
       howCanYouContribute: ""
     },
   })
@@ -68,19 +69,20 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-title">
                       Title
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Title" className="text-xs xl:text-sm" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem key='Mr' value='Mr' className="text-xs xl:text-sm">
-                              Mr
-                            </SelectItem>
-                             <SelectItem key='Miss' value='Miss' className="text-xs xl:text-sm">
-                              Miss
-                            </SelectItem>
-                        </SelectContent>
+                      <SelectTrigger id="research-supervisor-title" className="w-full" aria-invalid={fieldState.invalid}>
+                        <SelectValue placeholder="Select your title" className="text-xs xl:text-sm" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem key='mr' value='Mr' className="text-xs xl:text-sm">
+                          Mr
+                        </SelectItem>
+                        <SelectItem key='miss' value='Miss' className="text-xs xl:text-sm">
+                          Miss
+                        </SelectItem>
+                      </SelectContent>
                     </Select>
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
@@ -96,12 +98,13 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-name">
                       Full Name
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-supervisor-name"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your full name"
+                      placeholder="John Doe"
                       autoComplete="name"
                       className="text-xs xl:text-sm"
                     />
@@ -118,12 +121,13 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-designation">
                       Designation
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-supervisor-designation"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your designation"
+                      placeholder="Lecturer, Researcher, Student..."
                       autoComplete="organization-title"
                       className="text-xs xl:text-sm"
                     />
@@ -142,13 +146,14 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-affiliation">
-                      Affiliation
+                      Institution / Affiliation
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-supervisor-affiliation"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Enter your institution/organization"
+                      placeholder="Enter your institution or organization"
                       autoComplete="organization"
                       className="text-xs xl:text-sm"
                     />
@@ -167,10 +172,11 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-degree">
                       Degree
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Degree" className="text-xs xl:text-sm" />
+                        <SelectTrigger id="research-supervisor-degree" className="w-full" aria-invalid={fieldState.invalid}>
+                          <SelectValue placeholder="Select your degree" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectItem key='Bachelor' value='Bachelor' className="text-xs xl:text-sm">
@@ -210,12 +216,13 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-mobile">
                       Mobile Number
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-supervisor-mobile"
                       aria-invalid={fieldState.invalid}
-                      placeholder="07XXXXXXXX"
+                      placeholder="0771234567"
                       autoComplete="tel"
                       className="text-xs xl:text-sm"
                     />
@@ -233,12 +240,13 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-whatsapp">
                       WhatsApp Number
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-supervisor-whatsapp"
                       aria-invalid={fieldState.invalid}
-                      placeholder="07XXXXXXXX"
+                      placeholder="0771234567"
                       autoComplete="tel"
                       className="text-xs xl:text-sm"
                     />
@@ -256,6 +264,7 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-email">
                       Email Address
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
@@ -373,14 +382,15 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-category">
-                      Major Research Area
+                      Research Category
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     {isLoading ? (
                       <SelectSkeleton />
                     ) : (
                       <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a category" className="text-xs xl:text-sm" />
+                        <SelectTrigger id="research-supervisor-category" className="w-full" aria-invalid={fieldState.invalid}>
+                          <SelectValue placeholder="Select a research category" className="text-xs xl:text-sm" />
                         </SelectTrigger>
                         <SelectContent>
                           {data?.map((category) => (
@@ -397,18 +407,19 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
               />
 
               <Controller
-                name="minorResearchIdea"
+                name="minorResearchArea"
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-minor">
                       Minor Research Area
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       {...field}
                       id="research-supervisor-minor"
                       aria-invalid={fieldState.invalid}
-                      placeholder="Specify your minor research area"
+                      placeholder="Enter your minor research area"
                       autoComplete="off"
                       className="text-xs xl:text-sm"
                     />
@@ -428,7 +439,8 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="research-supervisor-noOfStudents">
-                      No of Students
+                      Number of Students
+                      <span className="text-red-500">*</span>
                     </FieldLabel>
                     <Input
                       type="number"
@@ -446,6 +458,29 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
                 )}
               />
 
+            <Controller
+              name="motivation"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="research-supervisor-motivation">
+                    Motivation
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="research-supervisor-motivation"
+                    aria-invalid={fieldState.invalid}
+                    placeholder="Describe your motivation"
+                    autoComplete="off"
+                    className="text-xs xl:text-sm"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
               <Controller
   name="howCanYouContribute"
   control={form.control}
@@ -455,17 +490,18 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
 
     return (
       <Field data-invalid={fieldState.invalid}>
-        <FieldLabel htmlFor="research-funding-contribution">
+        <FieldLabel htmlFor="research-supervisor-contribution">
           How can you contribute?
+          <span className="text-red-500">*</span>
         </FieldLabel>
         <Select
           onValueChange={(val) => {
-            field.onChange(val); // sets to "I can contribute in another way"
+            field.onChange(val);
           }}
           value={isOther ? "I can contribute in another way" : field.value}
         >
-          <SelectTrigger>
-            <SelectValue placeholder="Select contribution type" />
+          <SelectTrigger id="research-supervisor-contribution" className="w-full" aria-invalid={fieldState.invalid}>
+            <SelectValue placeholder="Select how you can contribute" className="text-xs xl:text-sm" />
           </SelectTrigger>
           <SelectContent>
             {typeofContributions?.map((type) => (
@@ -477,15 +513,22 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
         </Select>
 
         {isOther && (
-          <Input
-            id="research-funding-contribution-other"
-            placeholder="Please specify how you can contribute..."
-            onChange={(e) => field.onChange(e.target.value)}
-            onBlur={field.onBlur}
-            ref={field.ref}
-            value={isOther && field.value !== "I can contribute in another way" ? field.value : ""}
-            className="text-xs xl:text-sm mt-2"
-          />
+          <>
+            <FieldLabel htmlFor="research-supervisor-contribution-other" className="mt-2">
+              Contribution details
+              <span className="text-red-500">*</span>
+            </FieldLabel>
+            <Input
+              id="research-supervisor-contribution-other"
+              aria-invalid={fieldState.invalid}
+              placeholder="Explain how you can contribute to this research"
+              onChange={(e) => field.onChange(e.target.value)}
+              onBlur={field.onBlur}
+              ref={field.ref}
+              value={isOther && field.value !== "I can contribute in another way" ? field.value : ""}
+              className="text-xs xl:text-sm"
+            />
+          </>
         )}
 
         {fieldState.invalid && <FieldError errors={[fieldState.error]} />}

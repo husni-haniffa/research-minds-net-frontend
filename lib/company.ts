@@ -8,8 +8,8 @@ export const contactInfo = [
     },
     {
         id: 2,
-        label: "researchmindsnet@gmail.com",
-        href: ""
+        label: "researchmindsnetlk@gmail.com",
+        href: "mailto:researchmindsnetlk@gmail.com",
     },
     {
         id: 3,

@@ -1,4 +1,4 @@
-import { deleteResearchPlacement } from "@/api/research-placement";
+import { deleteResearchPlacement } from "@/api/conduct-research";
 import { useResearchPlacements } from "@/features/public/conduct-research/research-placements/placements.hooks";
 export { useResearchPlacements }
 import { useAuth } from "@clerk/nextjs";

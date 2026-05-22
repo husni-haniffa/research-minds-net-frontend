@@ -1,7 +1,7 @@
 import {
     createResearchSupervisor,
     fetchResearchSupervisor,
-} from "@/api/research-supervisor"
+} from "@/api/conduct-research"
 
 export {
     createResearchSupervisor,

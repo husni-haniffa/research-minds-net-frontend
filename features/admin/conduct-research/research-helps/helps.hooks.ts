@@ -1,4 +1,4 @@
-import { deleteResearchHelp } from "@/api/research-help";
+import { deleteResearchHelp } from "@/api/conduct-research";
 import { useResearchHelps } from "@/features/public/conduct-research/research-helps/helps.hooks";
 export { useResearchHelps }
 import { useAuth } from "@clerk/nextjs";
