@@ -93,11 +93,6 @@ export const adminNavLinks = [
                 url: "/admin/users",
                 icon: Users,
             },
-            {
-                title: "Waitlist",
-                url: "/admin/waitlist",
-                icon: ClipboardList,
-            },
         ],
     },
 

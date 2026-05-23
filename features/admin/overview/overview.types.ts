@@ -2,7 +2,6 @@ import { CheckCircle, ClipboardList, FileSearch, LucideIcon, Users } from "lucid
 
 export interface AdminOverviewResponse {
     users: number
-    waitlist: number
     underReview: number
     published: number
 }
@@ -27,15 +26,6 @@ export const Cards = (data: AdminOverviewResponse | undefined): StatCard[] => [
         href: '/admin/users',
         cta: 'View Users',
         gradient: 'from-blue-600 to-blue-400',
-    },
-    {
-        label: 'Waitlist Applicants',
-        description: 'Users who applied for membership',
-        value: data?.waitlist ?? 0,
-        icon: ClipboardList,
-        href: '/admin/waitlist',
-        cta: 'View Waitlist',
-        gradient: 'from-violet-600 to-violet-400',
     },
     {
         label: 'Submissions Under Review',
