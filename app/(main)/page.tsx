@@ -2,8 +2,8 @@
 import Hero from "@/components/app/Hero";
 import News from "@/components/app/News";
 import Event from "@/components/app/Event";
-import Membership from "@/components/app/Waitlist";
 import Publication from "@/components/app/Publication";
+import Membership from "@/components/app/Membership";
 
 export default function Home() { 
   return (
@@ -13,8 +13,8 @@ export default function Home() {
         <Publication/>
         <News/>
         <Event/>
+        <Membership/>
       </div>
-      <Membership/>
     </div>
   );
 }
