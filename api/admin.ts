@@ -1,6 +1,5 @@
 import { AdminOverviewResponse } from "@/features/admin/overview/overview.types";
 import { UserResponse } from "@/features/admin/users/user.types";
-import { MembershipPlanResponse } from "@/features/public/membership/plan.types";
 import { BASE_URL } from "@/types/api";
 
 export const fetchUserList = async(token: string): Promise<UserResponse[]>=> {
@@ -57,11 +56,3 @@ export const fetchAdminOverview = async (token: string): Promise<AdminOverviewRe
     return result
 }
 
-export const fetchPlans = async (): Promise<MembershipPlanResponse[]> => {
-    const response = await fetch(`${BASE_URL}/admin/plans`)
-    const result = await response.json()
-    if (!response.ok) {
-        throw new Error(result.message || 'Network Request Failed')
-    }
-    return result.data
-}
