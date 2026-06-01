@@ -15,7 +15,7 @@ const Event = () => {
   if(error instanceof Error) return <AlertError message={error.message}/>
 
   return (
-    <section className='pt-16 xl:pt-24'>
+    <section className='pt-16 xl:pt-24 pb-16 xl:pb-24'>
 
        <header className="flex flex-col items-center gap-3 mb-16 text-center">
   <motion.p
