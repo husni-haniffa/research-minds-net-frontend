@@ -61,7 +61,7 @@ export const formSchema = z.object({
         ),
 
     file: z
-        .instanceof(File)
+        .instanceof(File,{error: "Please upload a flyer post"})
         .refine(
             (file) =>
                 !file ||

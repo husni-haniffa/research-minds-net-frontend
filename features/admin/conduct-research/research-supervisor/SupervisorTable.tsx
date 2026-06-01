@@ -65,7 +65,7 @@ const SupervisorTable = ({ search }: { search: string }) => {
                     <TableCell>{idea.designation}</TableCell>
                     <TableCell>{idea.affiliation}</TableCell>
                     <TableCell>{idea.noOfStudents}</TableCell>
-                    <TableCell>{idea.categoryId.name}</TableCell>
+                    <TableCell>{idea.categoryId?.name}</TableCell>
                     <TableCell>{formateDate(new Date(idea.updatedAt))}</TableCell>
                     <TableCell>
                       <Dialog>

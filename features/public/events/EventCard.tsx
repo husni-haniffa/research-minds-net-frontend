@@ -1,6 +1,6 @@
 "use client"
 
-import { useEvents } from '@/features/admin/events/event.hooks'
+import { useActiveEvents } from '@/features/admin/events/event.hooks'
 import { EventCardsSkeleton } from './Skeleton'
 import { AlertError } from '@/components/ui/alert-error'
 import { motion } from 'framer-motion'
@@ -9,7 +9,7 @@ import Card from './Card'
 
 const EventCard = () => {
 
-    const { data, isLoading, error} = useEvents()
+    const { data, isLoading, error} = useActiveEvents()
     if(isLoading) return <EventCardsSkeleton/>
     if(error instanceof Error) return <AlertError message={error.message}/>
 

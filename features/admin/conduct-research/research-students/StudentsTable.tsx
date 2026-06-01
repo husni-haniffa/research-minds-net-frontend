@@ -63,7 +63,7 @@ const StudentsTable = ({ search }: { search: string }) => {
                     <TableCell>{idea.degree}</TableCell>
                     <TableCell>{idea.designation}</TableCell>
                     <TableCell>{idea.affiliation}</TableCell>
-                    <TableCell>{idea.categoryId.name}</TableCell>
+                    <TableCell>{idea.categoryId?.name}</TableCell>
                     <TableCell>{formateDate(new Date(idea.updatedAt))}</TableCell>
                     <TableCell>
                       <Dialog>
