@@ -3,12 +3,8 @@
 import { ResearchTypeRequest, ResearchTypeResponse } from "@/features/admin/research-types/research-type.types";
 import { BASE_URL } from "@/types/api";
 
-export const fetchResearchTypes = async (token: string): Promise<ResearchTypeResponse[]> => {
-    const response = await fetch(`${BASE_URL}/research-types`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        },
-    })
+export const fetchResearchTypes = async (): Promise<ResearchTypeResponse[]> => {
+    const response = await fetch(`${BASE_URL}/research-types`)
     const result = await response.json()
     if (!response.ok) {
         throw new Error(result.message || 'Failed to fetch research types')
@@ -16,12 +12,8 @@ export const fetchResearchTypes = async (token: string): Promise<ResearchTypeRes
     return result.data
 }
 
-export const fetchResearchTypeById = async (id: string, token: string): Promise<ResearchTypeResponse> => {
-    const response = await fetch(`${BASE_URL}/research-types/${id}`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        },
-    })
+export const fetchResearchTypeById = async (id: string): Promise<ResearchTypeResponse> => {
+    const response = await fetch(`${BASE_URL}/research-types/${id}`)
     const result = await response.json()
     if (!response.ok) {
         throw new Error(result.message || 'Failed to fetch research type with id')

@@ -6,28 +6,22 @@ import * as z from "zod"
 import { formSchema } from "./research-type.types"
 
 export function useResearchTypes() {
-    const { getToken } = useAuth()
 
     return useQuery({
         queryKey: ["researchTypes"],
         queryFn: async () => {
-            const token = await getToken()
-            if (!token) throw new Error("Not authenticated")
-            return fetchResearchTypes(token)
+            return fetchResearchTypes()
         },
     })
 }
 
 export function useResearchTypeById(researchTypeId: string) {
-    const { getToken } = useAuth()
 
     return useQuery({
         queryKey: ["researchTypes", researchTypeId],
         enabled: !!researchTypeId,
         queryFn: async () => {
-            const token = await getToken()
-            if (!token) throw new Error("Not authenticated")
-            return fetchResearchTypeById(researchTypeId, token)
+            return fetchResearchTypeById(researchTypeId)
         },
     })
 }
