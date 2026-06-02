@@ -1,22 +1,21 @@
 import { AlertError } from "@/components/ui/alert-error"
-import Card from "./Card"
 import { useFetchAdminOverview } from "./overview.hooks"
-import { Cards } from "./overview.types"
 import { AdminOverviewSkeleton } from "./Skeleton"
+import AdminOverviewCard from "./Card"
 
 const AdminOverview = () => {
   const { data, isLoading, error } = useFetchAdminOverview()
 
   if (isLoading) return <AdminOverviewSkeleton />
   if (error instanceof Error) return <AlertError message={error.message} />
+  if (!data) return null
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {Cards(data).map((card) => (
-        <Card key={card.href} {...card} />
-      ))}
+    <div>
+      <AdminOverviewCard data={data}/>
     </div>
   )
+
 }
 
 export default AdminOverview

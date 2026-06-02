@@ -1,5 +1,5 @@
 "use client"
-import { useEvents } from '@/features/admin/events/event.hooks'
+import { useActiveEvents } from '@/features/admin/events/event.hooks'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { AlertError } from '../ui/alert-error'
@@ -11,11 +11,11 @@ import Card from '@/features/public/events/Card'
 
 const Event = () => {
 
-  const { data, isLoading, error} = useEvents()
+  const { data, isLoading, error} = useActiveEvents()
   if(error instanceof Error) return <AlertError message={error.message}/>
 
   return (
-    <section className='pt-16 xl:pt-24'>
+    <section className='pt-16 xl:pt-24 pb-16 xl:pb-24'>
 
        <header className="flex flex-col items-center gap-3 mb-16 text-center">
   <motion.p

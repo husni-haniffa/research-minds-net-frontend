@@ -53,5 +53,6 @@ export const fetchAdminOverview = async (token: string): Promise<AdminOverviewRe
     if (!response.ok) {
         throw new Error(result.message || 'Network Request Failed')
     }
-    return result
+    return result.data
 }
+

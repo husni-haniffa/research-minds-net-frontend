@@ -8,14 +8,14 @@ import ButtonLoader from "@/components/ui/button-loader"
 
 type UpdatePublishStatusProps = {
   id: string
-  defaultVisibility?: "PUBLIC" | "MEMBERS"
+  defaultVisibility?: "PUBLIC"
   live: "Yes" | "No"
   currentStatus: string
 }
 
 const UpdatePublishStatus = ({id, defaultVisibility = "PUBLIC", live, currentStatus}: UpdatePublishStatusProps) => {
 
-  const [visibility, setVisibility] = React.useState<"PUBLIC" | "MEMBERS">(defaultVisibility)
+  const [visibility, setVisibility] = React.useState<"PUBLIC">(defaultVisibility)
   const [open, setOpen] = React.useState(false)
 
   const publishMutation = usePublishSubmission()
@@ -40,15 +40,11 @@ const UpdatePublishStatus = ({id, defaultVisibility = "PUBLIC", live, currentSta
           <RadioGroup
             value={visibility}
             onValueChange={(value) =>
-              setVisibility(value as "PUBLIC" | "MEMBERS")}
+              setVisibility(value as "PUBLIC")}
             >
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="PUBLIC" id="public" />
               <Label htmlFor="public">Public</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="MEMBERS" id="members" />
-              <Label htmlFor="members">Members only</Label>
             </div>
           </RadioGroup>
         </div>

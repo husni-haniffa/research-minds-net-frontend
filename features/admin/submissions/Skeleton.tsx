@@ -14,6 +14,7 @@ export const SubmissionTableSkeleton = () => {
               <TableHead>Update</TableHead>
               <TableHead>Live</TableHead>
               <TableHead>Access</TableHead>
+              <TableHead>Social Media</TableHead>
               <TableHead>Updated</TableHead> 
               <TableHead>Publish</TableHead>
               <TableHead>Delete</TableHead>
@@ -42,6 +43,12 @@ export const SubmissionTableSkeleton = () => {
             </TableCell>
             <TableCell>
               <Skeleton className="h-5 w-15" />
+            </TableCell>
+            <TableCell>
+              <div className='flex gap-2'>
+                <Skeleton className="h-5 w-6" />
+                <Skeleton className="h-5 w-6" />
+              </div>
             </TableCell>
             <TableCell>
               <Skeleton className="h-5 w-18" />

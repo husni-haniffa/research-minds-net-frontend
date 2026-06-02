@@ -35,7 +35,10 @@ const PublicationCard = ({ search }: { search: string }) => {
     if(isLoading || isSearchingPublication ) return <PublicationCardSkeleton/>
     if(error instanceof Error) return <AlertError message={error.message}/>
     if (researchTypesError instanceof Error) return <AlertError message={researchTypesError.message}/>
-    if (!data || data.length === 0) return <p className='flex items-center justify-center font-semibold text-lg'>No publications, create one</p>
+    if (!data || data.length === 0) return 
+    <p className='flex items-center justify-center font-semibold text-lg'>
+        No publications yet
+    </p>
 
   return (
     

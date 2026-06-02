@@ -1,9 +1,9 @@
 import {
-    fetchEvents,
+    fetchActiveEvents,
     fetchEventById,
 } from "@/api/event"
 
 export {
-    fetchEvents,
+    fetchActiveEvents,
     fetchEventById,
 }
