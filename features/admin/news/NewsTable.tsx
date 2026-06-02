@@ -53,7 +53,7 @@ const NewsTable = ({ search }: { search: string }) => {
         <TableBody>
             {filtered?.map((news) => (
                 <TableRow key={news._id}>
-                    <TableCell>{news.title}</TableCell>
+                    <TableCell>{news.title.slice(0,50)}</TableCell>
                     <TableCell>
                       <Dialog>
                         <DialogTrigger asChild>

@@ -93,7 +93,7 @@ const CreateSubmissionForm = ({ onSuccess } : CreateSubmissionFormProps) => {
                             aria-invalid={fieldState.invalid}
                             placeholder="Research title"
                             autoComplete="off"
-                            className="text-xs xl:text-sm"
+                            className="overflow-y-auto resize-y text-xs xl:text-sm"
                         />
                         {fieldState.invalid && (
                             <FieldError errors={[fieldState.error]} />
@@ -118,7 +118,7 @@ const CreateSubmissionForm = ({ onSuccess } : CreateSubmissionFormProps) => {
                             machine learning approaches. The research evaluates effectiveness, scalability, and accuracy across simulated environments.
                             Keywords: cyber security, threat detection"
                             autoComplete="off"
-                            className="text-xs xl:text-sm"
+                            className="overflow-y-auto resize-y text-xs xl:text-sm"
                         />
                         {fieldState.invalid && (
                             <FieldError errors={[fieldState.error]} />

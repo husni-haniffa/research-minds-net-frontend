@@ -1,14 +1,27 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
 import { useAuth } from "@clerk/nextjs"
-import { fetchEvents, fetchEventById, createEvent, updateEvent, deleteEvent } from "./event.api"
+import { fetchEvents, fetchEventById, createEvent, updateEvent, deleteEvent, fetchActiveEvents } from "./event.api"
 import * as z from "zod"
 import { EditFormSchema, EventResponse, formSchema } from "./event.types"
 
 export function useEvents() {
+    const { getToken } = useAuth()
     return useQuery({
         queryKey: ["events"],
-        queryFn: fetchEvents
+        queryFn: async () => {
+            const token = await getToken()
+            if (!token) throw new Error("Not authenticated")
+            return fetchEvents(token)
+        },
+        
+    })
+}
+
+export function useActiveEvents() {
+    return useQuery({
+        queryKey: ["events"],
+        queryFn: fetchActiveEvents
     })
 }
 

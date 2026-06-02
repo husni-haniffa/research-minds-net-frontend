@@ -2,8 +2,21 @@
 import {  EventResponse } from "@/features/admin/events/event.types";
 import { BASE_URL } from "@/types/api";
 
-export const fetchEvents = async (): Promise<EventResponse[]> => {
-    const response = await fetch(`${BASE_URL}/events`)
+export const fetchEvents = async (token: string): Promise<EventResponse[]> => {
+    const response = await fetch(`${BASE_URL}/events`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    })
+    const result = await response.json()
+    if (!response.ok) {
+        throw new Error(result.message || 'Failed to fetch events')
+    }
+    return result.data
+}
+
+export const fetchActiveEvents = async (): Promise<EventResponse[]> => {
+    const response = await fetch(`${BASE_URL}/events/all`)
     const result = await response.json()
     if (!response.ok) {
         throw new Error(result.message || 'Failed to fetch events')

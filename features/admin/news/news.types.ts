@@ -23,7 +23,7 @@ export const formSchema = z.object({
         .string()
         .trim()
         .min(1, "News title is required")
-        .max(2500, "News title is too long"),
+        .max(250, "News title is too long"),
 
     content: z
         .string()

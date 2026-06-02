@@ -38,7 +38,7 @@ const ReadNews = ({ id }: { id: string }) => {
         )}
 
         {/* Title */}
-        <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-slate-900 leading-tight">
+        <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-slate-900 leading-tight line-clamp-2">
           {data?.title}
         </h1>
 
@@ -51,7 +51,7 @@ const ReadNews = ({ id }: { id: string }) => {
         <div className="h-px bg-slate-100" />
 
         {/* Content */}
-        <p className="text-sm md:text-base text-slate-500 leading-relaxed">
+        <p className="text-sm md:text-base text-slate-500 leading-relaxed line-clamp-6">
           {data?.content}
         </p>
 
