@@ -28,7 +28,7 @@ export const formSchema = z.object({
         .string()
         .trim()
         .min(1, "Event title is required")
-        .max(500, "Event title is too long")
+        .max(175, "Event title is too long")
         .regex(
             /^[A-Za-z0-9\s:,\-()./]+$/,
             "Title contains invalid characters"
@@ -38,7 +38,7 @@ export const formSchema = z.object({
         .string()
         .trim()
         .min(1, "Event description is required")
-        .max(1000, "Event description is too long"),
+        .max(300, "Event description is too long"),
 
     eventDate: z
         .date()
@@ -54,7 +54,7 @@ export const formSchema = z.object({
         .string()
         .trim()
         .min(1, "Event location is required")
-        .max(500, "Event location is too long")
+        .max(300, "Event location is too long")
         .regex(
             /^[A-Za-z0-9 ,.-]+$/,
             "Location contains invalid characters"
