@@ -4,10 +4,10 @@ import { SubmissionResponse } from './submission.types'
 
 const SubmissionView = ({submission} : {submission: SubmissionResponse})  => {
   return (
-    <Card className='w-w-full border-0 shadow-none' key={submission._id}>
+    <Card className='w-full border-0 shadow-none' key={submission._id}>
         <CardHeader>
-            <CardTitle className='text-slate-800 text-sm'>
-                {submission.title}
+            <CardTitle className='text-slate-800 text-sm line-clamp-2 max-w-sm'>
+                {submission.title.slice(0,75)}...
             </CardTitle>
             <CardDescription className='text-slate-600 text-xs'>
                 {submission.categoryId.name}
@@ -16,8 +16,8 @@ const SubmissionView = ({submission} : {submission: SubmissionResponse})  => {
                 {submission.researchTypeId.name}
             </CardAction>
         </CardHeader>
-        <CardContent className='text-sm'>
-            {submission.abstract.slice(0,250)}
+        <CardContent className='text-sm line-clamp-6 max-w-md'>
+            {submission.abstract.slice(0,500)}...
         </CardContent>
         <CardFooter className='text-xs'>
             <span className='font-semibold mr-3 text-xs'>

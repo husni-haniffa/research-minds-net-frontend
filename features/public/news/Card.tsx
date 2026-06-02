@@ -36,12 +36,12 @@ const Card = ({news} : NewsCardProps) => {
   <div className="flex flex-col gap-5 p-5">
 
     {/* Title */}
-    <h3 className="text-base xl:text-lg font-bold text-slate-900 leading-snug">
+    <h3 className="text-base xl:text-lg font-bold text-slate-900 leading-snug line-clamp-2">
       {news.title}
     </h3>
 
     {/* Content preview */}
-    <p className="text-sm text-slate-500 leading-relaxed">
+    <p className="text-sm text-slate-500 leading-relaxed line-clamp-3">
       {news.content.slice(0, 500)}...
     </p>
 
