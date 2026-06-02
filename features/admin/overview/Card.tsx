@@ -1,150 +1,86 @@
 import {
   Users,
   Clock,
-  Eye,
-  FileText,
-  CheckCircle,
-  XCircle,
-  BookOpen,
-  Lightbulb,
-  HelpCircle,
-  DollarSign,
-  GraduationCap,
-  UserCheck,
-  Briefcase,
   Calendar,
   MapPin,
-  TrendingUp,
 } from "lucide-react"
 import { AdminOverviewResponse } from "./overview.types"
 
-// ─── Stat Card ────────────────────────────────────────────────────────────────
-
-interface StatCardProps {
+interface KpiCardProps {
+  title: string
+  value: number
   icon: React.ElementType
+}
+
+const KpiCard = ({
+  title,
+  value,
+  icon: Icon,
+}: KpiCardProps) => (
+  <div className="group rounded-3xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:border-slate-300 hover:shadow-lg">
+    <div className="flex items-start justify-between">
+      <div>
+        <p className="text-sm font-medium text-slate-500">
+          {title}
+        </p>
+
+        <h3 className="mt-3 text-4xl font-bold tracking-tight text-slate-900">
+          {value.toLocaleString()}
+        </h3>
+      </div>
+
+      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-100">
+        <Icon size={20} className="text-slate-600" />
+      </div>
+    </div>
+  </div>
+)
+
+const SectionHeader = ({
+  title,
+  description,
+}: {
+  title: string
+  description?: string
+}) => (
+  <div className="mb-5">
+    <h2 className="text-xl font-semibold tracking-tight text-slate-900">
+      {title}
+    </h2>
+
+    {description && (
+      <p className="mt-1 text-sm text-slate-500">
+        {description}
+      </p>
+    )}
+  </div>
+)
+
+const StatusItem = ({
+  label,
+  value,
+  color,
+}: {
   label: string
   value: number
-  colorClass: {
-    bg: string
-    iconBg: string
-    iconText: string
-    valuText: string
-    border: string
-  }
-}
+  color: string
+}) => (
+  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 transition-all duration-200 hover:border-slate-300">
+    <div className={`mb-3 h-2 w-12 rounded-full ${color}`} />
 
-const StatCard = ({ icon: Icon, label, value, colorClass }: StatCardProps) => (
-  <div
-    className={`
-      relative flex flex-col gap-3 rounded-2xl border p-5
-      transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md
-      ${colorClass.bg} ${colorClass.border}
-    `}
-  >
-    <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${colorClass.iconBg}`}>
-      <Icon size={20} className={colorClass.iconText} />
-    </div>
-    <div>
-      <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">
-        {label}
-      </p>
-      <p className={`mt-1 text-3xl font-bold tabular-nums tracking-tight ${colorClass.valuText}`}>
-        {value.toLocaleString()}
-      </p>
-    </div>
+    <p className="text-sm text-slate-500">{label}</p>
+
+    <p className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
+      {value.toLocaleString()}
+    </p>
   </div>
 )
 
-// ─── Section ─────────────────────────────────────────────────────────────────
-
-const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="space-y-4">
-    <div className="flex items-center gap-3">
-      <div className="h-4 w-1 rounded-full bg-indigo-500" />
-      <h2 className="text-xs font-bold uppercase tracking-[0.15em] text-gray-500">{title}</h2>
-    </div>
-    {children}
-  </div>
-)
-
-// ─── Colors ──────────────────────────────────────────────────────────────────
-
-const colors = {
-  blue: {
-    bg: "bg-blue-50",
-    iconBg: "bg-blue-600",
-    iconText: "text-white",
-    valuText: "text-blue-700",
-    border: "border-blue-100",
-  },
-  violet: {
-    bg: "bg-violet-50",
-    iconBg: "bg-violet-600",
-    iconText: "text-white",
-    valuText: "text-violet-700",
-    border: "border-violet-100",
-  },
-  amber: {
-    bg: "bg-amber-50",
-    iconBg: "bg-amber-500",
-    iconText: "text-white",
-    valuText: "text-amber-700",
-    border: "border-amber-100",
-  },
-  cyan: {
-    bg: "bg-cyan-50",
-    iconBg: "bg-cyan-600",
-    iconText: "text-white",
-    valuText: "text-cyan-700",
-    border: "border-cyan-100",
-  },
-  emerald: {
-    bg: "bg-emerald-50",
-    iconBg: "bg-emerald-600",
-    iconText: "text-white",
-    valuText: "text-emerald-700",
-    border: "border-emerald-100",
-  },
-  red: {
-    bg: "bg-red-50",
-    iconBg: "bg-red-500",
-    iconText: "text-white",
-    valuText: "text-red-600",
-    border: "border-red-100",
-  },
-  indigo: {
-    bg: "bg-indigo-50",
-    iconBg: "bg-indigo-600",
-    iconText: "text-white",
-    valuText: "text-indigo-700",
-    border: "border-indigo-100",
-  },
-  yellow: {
-    bg: "bg-yellow-50",
-    iconBg: "bg-yellow-500",
-    iconText: "text-white",
-    valuText: "text-yellow-700",
-    border: "border-yellow-100",
-  },
-  pink: {
-    bg: "bg-pink-50",
-    iconBg: "bg-pink-600",
-    iconText: "text-white",
-    valuText: "text-pink-700",
-    border: "border-pink-100",
-  },
-  teal: {
-    bg: "bg-teal-50",
-    iconBg: "bg-teal-600",
-    iconText: "text-white",
-    valuText: "text-teal-700",
-    border: "border-teal-100",
-  },
-}
-
-// ─── Main Component ───────────────────────────────────────────────────────────
-
-const AdminOverviewCard = ({ data }: { data: AdminOverviewResponse }) => {
+const AdminOverviewCard = ({
+  data,
+}: {
+  data: AdminOverviewResponse
+}) => {
   const totalSubmissions =
     data.submissions.pending +
     data.submissions.underReview +
@@ -153,133 +89,160 @@ const AdminOverviewCard = ({ data }: { data: AdminOverviewResponse }) => {
     data.submissions.published
 
   return (
-    <div className="space-y-10 py-2">
+    <div className="space-y-10">
 
-      {/* ── Users ── */}
-      <Section title="Users">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <StatCard
-            icon={Users}
-            label="Total Users"
+      {/* DASHBOARD OVERVIEW */}
+      <section>
+        <SectionHeader
+          title="Dashboard Overview"
+          description="A snapshot of users, submissions, applications and upcoming activity"
+        />
+
+        <div className="grid gap-5 md:grid-cols-2">
+          <KpiCard
+            title="Total Users"
             value={data.users.total}
-            colorClass={colors.blue}
+            icon={Users}
           />
-          <StatCard
-            icon={Clock}
-            label="Joined in Last 72 Hours"
+
+          <KpiCard
+            title="New Users (Last 72 Hours)"
             value={data.users.recentlyJoined}
-            colorClass={colors.violet}
+            icon={Clock}
           />
         </div>
-      </Section>
+      </section>
 
-      {/* ── Submissions ── */}
-      <Section title="Submissions">
-        {/* Summary bar */}
-        <div className="mb-1 flex items-center justify-between">
-          <p className="text-xs text-gray-400">
-            <span className="font-semibold text-gray-700">{totalSubmissions.toLocaleString()}</span> total submissions
-          </p>
-          <div className="flex items-center gap-1 text-xs text-emerald-600 font-medium">
-            <TrendingUp size={12} />
-            Live data
+      {/* SUBMISSIONS */}
+      <section className="rounded-3xl border border-slate-200 bg-white p-6">
+
+        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="text-xl font-semibold tracking-tight text-slate-900">
+              Submission Overview
+            </h2>
+
+            <p className="mt-1 text-sm text-slate-500">
+              A live breakdown of submission statuses across all stages
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-slate-900 px-5 py-3 text-white">
+            <p className="text-xs font-medium uppercase tracking-wider text-slate-300">
+              Total Submissions
+            </p>
+            <p className="text-2xl font-bold">
+              {totalSubmissions.toLocaleString()}
+            </p>
           </div>
         </div>
 
-        {/* Progress bar */}
-        {totalSubmissions > 0 && (
-          <div className="mb-4 flex h-2 w-full overflow-hidden rounded-full bg-gray-100">
-            <div
-              className="bg-amber-400 transition-all"
-              style={{ width: `${(data.submissions.pending / totalSubmissions) * 100}%` }}
-            />
-            <div
-              className="bg-cyan-500 transition-all"
-              style={{ width: `${(data.submissions.underReview / totalSubmissions) * 100}%` }}
-            />
-            <div
-              className="bg-emerald-500 transition-all"
-              style={{ width: `${(data.submissions.accepted / totalSubmissions) * 100}%` }}
-            />
-            <div
-              className="bg-red-400 transition-all"
-              style={{ width: `${(data.submissions.rejected / totalSubmissions) * 100}%` }}
-            />
-            <div
-              className="bg-indigo-500 transition-all"
-              style={{ width: `${(data.submissions.published / totalSubmissions) * 100}%` }}
-            />
+        {/* STATUS CHIPS (replaces progress bar) */}
+        <div className="mb-6 flex flex-wrap gap-3">
+          <div className="rounded-full bg-amber-50 px-3 py-1.5 text-sm font-medium text-amber-700">
+            Pending · {data.submissions.pending}
           </div>
-        )}
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          <StatCard icon={Eye} label="Pending" value={data.submissions.pending} colorClass={colors.amber} />
-          <StatCard icon={FileText} label="Under Review" value={data.submissions.underReview} colorClass={colors.cyan} />
-          <StatCard icon={CheckCircle} label="Accepted" value={data.submissions.accepted} colorClass={colors.emerald} />
-          <StatCard icon={XCircle} label="Rejected" value={data.submissions.rejected} colorClass={colors.red} />
-          <StatCard icon={BookOpen} label="Published" value={data.submissions.published} colorClass={colors.indigo} />
+          <div className="rounded-full bg-indigo-50 px-3 py-1.5 text-sm font-medium text-indigo-700">
+            Review · {data.submissions.underReview}
+          </div>
+
+          <div className="rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-medium text-emerald-700">
+            Accepted · {data.submissions.accepted}
+          </div>
+
+          <div className="rounded-full bg-rose-50 px-3 py-1.5 text-sm font-medium text-rose-700">
+            Rejected · {data.submissions.rejected}
+          </div>
+
+          <div className="rounded-full bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700">
+            Published · {data.submissions.published}
+          </div>
         </div>
-      </Section>
 
-      {/* ── Research Applications ── */}
-      <Section title="Conduct Research Applications">
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          <StatCard icon={Lightbulb} label="Idea" value={data.applications.idea} colorClass={colors.yellow} />
-          <StatCard icon={HelpCircle} label="Help" value={data.applications.help} colorClass={colors.cyan} />
-          <StatCard icon={DollarSign} label="Funding" value={data.applications.funding} colorClass={colors.emerald} />
-          <StatCard icon={GraduationCap} label="Student" value={data.applications.student} colorClass={colors.violet} />
-          <StatCard icon={UserCheck} label="Supervisor" value={data.applications.supervisor} colorClass={colors.blue} />
-          <StatCard icon={Briefcase} label="Placement" value={data.applications.placement} colorClass={colors.pink} />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <StatusItem label="Pending" value={data.submissions.pending} color="bg-amber-500" />
+          <StatusItem label="Under Review" value={data.submissions.underReview} color="bg-indigo-500" />
+          <StatusItem label="Accepted" value={data.submissions.accepted} color="bg-emerald-500" />
+          <StatusItem label="Rejected" value={data.submissions.rejected} color="bg-rose-500" />
+          <StatusItem label="Published" value={data.submissions.published} color="bg-slate-500" />
         </div>
-      </Section>
+      </section>
 
-      {/* ── Upcoming Events ── */}
-      <Section title="Upcoming Events — Next 14 Days">
-        {(data.upcomingEvents?.upcomingEvents?.length ?? 0) === 0 ? (
-          <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-gray-200 bg-gray-50 py-14">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
-              <Calendar size={22} className="text-gray-400" />
-            </div>
-            <p className="text-sm font-medium text-gray-400">No upcoming events scheduled</p>
+      {/* APPLICATIONS */}
+      <section className="rounded-3xl border border-slate-200 bg-white p-6">
+        <SectionHeader
+          title="Research Applications"
+          description="Submitted applications across all research areas"
+        />
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <StatusItem label="Idea" value={data.applications.idea} color="bg-indigo-500" />
+          <StatusItem label="Help" value={data.applications.help} color="bg-indigo-500" />
+          <StatusItem label="Funding" value={data.applications.funding} color="bg-indigo-500" />
+          <StatusItem label="Student" value={data.applications.student} color="bg-indigo-500" />
+          <StatusItem label="Supervisor" value={data.applications.supervisor} color="bg-indigo-500" />
+          <StatusItem label="Placement" value={data.applications.placement} color="bg-indigo-500" />
+        </div>
+      </section>
+
+      {/* EVENTS */}
+      <section>
+        <SectionHeader
+          title="Upcoming Events"
+          description="Stay ahead with events scheduled over the coming 14 days"
+        />
+
+        {(data.upcomingEvents?.length ?? 0) === 0 ? (
+          <div className="rounded-3xl border border-dashed border-slate-200 bg-slate-50 py-16 text-center">
+            <Calendar size={32} className="mx-auto mb-4 text-slate-400" />
+            <p className="text-sm font-medium text-slate-500">
+              No upcoming events scheduled
+            </p>
           </div>
         ) : (
-          <div className="flex flex-col gap-3">
-            {(data.upcomingEvents?.upcomingEvents ?? []).map((event) => (
+          <div className="space-y-4">
+            {data.upcomingEvents.map((event) => (
               <div
                 key={event._id}
-                className="group flex flex-wrap items-center gap-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-100 hover:shadow-md"
+                className="rounded-3xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:border-slate-300 hover:shadow-md"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-600 shadow-sm">
-                  <Calendar size={19} className="text-white" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors">
-                    {event.title}
-                  </p>
-                  <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1">
-                    <span className="flex items-center gap-1.5 text-xs font-medium text-gray-400">
-                      <Clock size={11} className="text-indigo-400" />
-                      {new Date(event.eventDate).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                      })}{" "}
-                      · {event.eventTime}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-xs font-medium text-gray-400">
-                      <MapPin size={11} className="text-indigo-400" />
-                      {event.location}
-                    </span>
+                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-lg font-semibold text-slate-900">
+                      {event.title}
+                    </h3>
+
+                    <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-slate-500">
+                      <span className="flex items-center gap-2">
+                        <Calendar size={14} />
+                        {new Date(event.eventDate).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        })}
+                      </span>
+
+                      <span>{event.eventTime}</span>
+
+                      <span className="flex items-center gap-2">
+                        <MapPin size={14} />
+                        {event.location}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="shrink-0 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-600">
-                  Upcoming
+
+                  <div className="shrink-0 rounded-full bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-700">
+                    Upcoming
+                  </div>
+
                 </div>
               </div>
             ))}
           </div>
         )}
-      </Section>
+      </section>
 
     </div>
   )
