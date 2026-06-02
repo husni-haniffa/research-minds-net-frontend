@@ -37,7 +37,7 @@ const ReadPublication = ({ id }: { id: string }) => {
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-slate-900 leading-tight">
+        <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-slate-900 leading-tight line-clamp-2">
           {data?.title}
         </h1>
 
@@ -63,7 +63,7 @@ const ReadPublication = ({ id }: { id: string }) => {
         {/* Abstract */}
         <div className="flex flex-col gap-3">
           <h2 className="text-lg font-bold text-slate-800">Abstract</h2>
-          <p className="text-sm text-slate-500 leading-relaxed">
+          <p className="text-sm text-slate-500 leading-relaxed line-clamp-6">
             {data?.abstract}
           </p>
         </div>

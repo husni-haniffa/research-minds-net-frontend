@@ -1,48 +1,31 @@
-import { CheckCircle, ClipboardList, FileSearch, LucideIcon, Users } from "lucide-react"
+import { EventResponse } from "../events/event.types"
 
 export interface AdminOverviewResponse {
-    users: number
+    users: UserStats
+    submissions: SubmissionStats
+    applications: ApplicationStats
+    upcomingEvents: EventResponse[]
+}
+
+export interface UserStats {
+    total: number
+    recentlyJoined: number
+}
+
+export interface SubmissionStats {
+    pending: number
     underReview: number
+    rejected: number
+    accepted: number
     published: number
 }
 
-export interface StatCard {
-    label: string
-    description: string
-    value: number
-    icon: LucideIcon
-    href: string
-    cta: string
-    gradient: string
+export interface ApplicationStats {
+    idea: number
+    help: number
+    supervisor: number
+    funding: number
+    placement: number
+    student: number
 }
 
-
-export const Cards = (data: AdminOverviewResponse | undefined): StatCard[] => [
-    {
-        label: 'Joined Users',
-        description: 'Users who have signed in to the platform',
-        value: data?.users ?? 0,
-        icon: Users,
-        href: '/admin/users',
-        cta: 'View Users',
-        gradient: 'from-blue-600 to-blue-400',
-    },
-    {
-        label: 'Submissions Under Review',
-        description: 'Submissions pending your review',
-        value: data?.underReview ?? 0,
-        icon: FileSearch,
-        href: '/admin/submissions',
-        cta: 'Review Submissions',
-        gradient: 'from-amber-500 to-amber-400',
-    },
-    {
-        label: 'Published',
-        description: 'Publications that are live',
-        value: data?.published ?? 0,
-        icon: CheckCircle,
-        href: '/admin/publications',
-        cta: 'View Publications',
-        gradient: 'from-emerald-600 to-emerald-400',
-    },
-]

@@ -24,8 +24,8 @@ export const formSchema = z.object({
         .string()
         .trim()
         .min(1, "Research type is required")
-        .max(21, "Name must not exceed 21 characters")
-        .regex(/^[A-Za-z0-9\s:,\-()./]+$/, "Name contains invalid characters"),
+        .max(30, "Research type must not exceed 30 characters")
+        .regex(/^[A-Za-z0-9\s:,\-()./]+$/, "Research type contains invalid characters"),
 });
 
 

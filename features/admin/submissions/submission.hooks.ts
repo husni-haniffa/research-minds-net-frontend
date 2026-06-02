@@ -88,7 +88,7 @@ export function usePublishSubmission() {
             accessLevel,
         }: {
             id: string
-            accessLevel: "PUBLIC" | "MEMBERS"
+            accessLevel: "PUBLIC"
         }) => {
             const token = await getToken()
             if (!token) throw new Error("Not authenticated")

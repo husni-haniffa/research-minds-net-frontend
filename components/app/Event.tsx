@@ -1,5 +1,5 @@
 "use client"
-import { useEvents } from '@/features/admin/events/event.hooks'
+import { useActiveEvents } from '@/features/admin/events/event.hooks'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { AlertError } from '../ui/alert-error'
@@ -11,7 +11,7 @@ import Card from '@/features/public/events/Card'
 
 const Event = () => {
 
-  const { data, isLoading, error} = useEvents()
+  const { data, isLoading, error} = useActiveEvents()
   if(error instanceof Error) return <AlertError message={error.message}/>
 
   return (
