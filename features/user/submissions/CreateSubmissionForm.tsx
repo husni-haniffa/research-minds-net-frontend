@@ -107,7 +107,7 @@ const CreateSubmissionForm = ({ onSuccess } : CreateSubmissionFormProps) => {
                   render={({ field, fieldState }) => (
                     <Field data-invalid={fieldState.invalid}>
                         <FieldLabel htmlFor="create-submission-abstract-title">
-                          Enter Research Submission
+                          Enter Research Abstract
                         <span className="text-red-500">*</span>
                         </FieldLabel>
                         <Textarea

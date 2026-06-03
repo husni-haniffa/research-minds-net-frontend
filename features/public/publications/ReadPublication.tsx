@@ -8,6 +8,7 @@ import { AlertError } from '@/components/ui/alert-error'
 import { ReadPublicationSkeleton } from './Skeleton'
 import { motion } from 'framer-motion'
 import SocialLinks from './SocialLinks'
+import { SignedIn, SignedOut } from '@clerk/nextjs'
 
 
 // ReadPublication
@@ -88,12 +89,22 @@ const ReadPublication = ({ id }: { id: string }) => {
           {data?.socialMediaLinks && (
             <SocialLinks links={data.socialMediaLinks} />
           )}
-          <Button asChild className="ml-auto shrink-0">
-            <Link href={data?.filePath || ""} target="_blank" className="flex items-center gap-1.5 font-semibold">
-              <Download className="w-4 h-4" />
-              Download Paper
-            </Link>
-          </Button>
+          <SignedIn>
+            <Button asChild className="ml-auto shrink-0">
+              <Link href={data?.filePath || ""} target="_blank" className="flex items-center gap-1.5 font-semibold">
+                <Download className="w-4 h-4" />
+                Download
+              </Link>
+            </Button>
+          </SignedIn>
+          <SignedOut>
+            <Button asChild>
+              <Link href={'/sign-in'} className="flex items-center gap-1.5 font-semibold">
+                <Download className="w-4 h-4" />
+                Download
+              </Link>
+            </Button>
+          </SignedOut>
         </div>
 
       </motion.article>
