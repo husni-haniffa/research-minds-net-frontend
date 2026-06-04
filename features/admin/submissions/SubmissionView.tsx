@@ -6,7 +6,7 @@ const SubmissionView = ({submission} : {submission: SubmissionResponse})  => {
   return (
     <Card className='w-full border-0 shadow-none' key={submission._id}>
         <CardHeader>
-            <CardTitle className='text-slate-800 text-sm line-clamp-2 max-w-sm'>
+            <CardTitle className='text-slate-800 text-base line-clamp-2 max-w-sm'>
                 {submission.title.slice(0,75)}...
             </CardTitle>
             <CardDescription className='text-slate-600 text-xs'>

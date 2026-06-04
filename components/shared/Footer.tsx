@@ -23,7 +23,7 @@ const Footer = () => {
         </Link>
 
         <p className="text-sm text-slate-400 leading-relaxed">
-          A place for minds to connect, ideas to grow, and research to create real-world impact.
+              A place for minds to connect, ideas to grow, and research to find the right support.
         </p>
 
         {/* Social icons */}

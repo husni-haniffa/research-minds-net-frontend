@@ -53,8 +53,8 @@ const ResearchSupervisorForm = ({ onSuccess } : ResearchSupervisorFormProps) => 
   return (
     <Card className="w-full border-0 shadow-none">
       <CardHeader>
-        <CardTitle>Research Supervisor</CardTitle>
-        <CardDescription>Find research supervisors for your projects</CardDescription>
+        <CardTitle>Find a Supervisor</CardTitle>
+        <CardDescription>Submit your research details and academic background to find a qualified supervisor for your project.</CardDescription>
       </CardHeader>
         <CardContent>
           <form id="research-supervisor-submission" onSubmit={form.handleSubmit((v) => createMutation.mutate(v))}>

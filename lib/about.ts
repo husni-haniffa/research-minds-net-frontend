@@ -15,54 +15,53 @@ export const howWeSupport = [
     {
         icon: Microscope,
         ui: "text-blue-500 w-4 h-4 sm:w-5 sm:h-5",
-        title: "Conduct Research",
-        description: "We support researchers throughout their research journey, providing the guidance, resources, and academic support needed to achieve meaningful and high-quality outcomes.",
+        title: "Facilitating Projects",
+        description: "We help researchers navigate their structural hurdles by providing a direct network to find certified academic assistance, tools, and project guidance.",
         features: [
-            "Support for developing research ideas",
-            "Guidance in finding supervisors and placements",
-            "Assistance with funding and sample collection",
-            "Support for data interpretation and scientific writing",
-            "Publication guidance and further studies support"
+            "Submit and showcase raw research ideas",
+            "Direct paths to find supervisors and placements",
+            "Connections to funding opportunities and donors",
+            "Support networking for sample analysis",
+            "Streamlining student-to-student collaboration"
         ]
     },
     {
         icon: Lightbulb,
         ui: "text-amber-500 w-4 h-4 sm:w-5 sm:h-5",
-        title: "Products, Innovations & Research Aids",
-        description: "A collaborative space to develop, improve, and share research products, innovations, and academic resources within the university community.",
+        title: "Innovations & Research Aids",
+        description: "A collaborative directory to share ongoing scientific assets, practical tools, and logistical help within the research community.",
         features: [
-            "Showcasing new products and innovations",
-            "Connecting innovators, researchers, and collaborators",
-            "Access to research aids and materials",
-            "Support for sample analysis",
-            "Assistance with data analysis and scientific writing"
+            "Showcasing local products and innovations",
+            "Connecting raw innovators with resource contributors",
+            "Discovering helpful research aids and methodologies",
+            "Shared support workflows for lab data",
+            "Peer assistance with text editing and documentation"
         ]
     },
     {
         icon: Calendar,
         ui: "text-violet-500 w-4 h-4 sm:w-5 sm:h-5",
-        title: "News, Events & Facilities",
-        description: "Keeping our academic community informed about important research news, events, and facilities that support learning and discovery.",
+        title: "News & Institutional Updates",
+        description: "Keeping the local academic network continuously updated with systemic announcements, active timelines, and available lab spaces.",
         features: [
-            "Research news and academic updates",
-            "Conference and seminar information",
-            "Training programs and workshops",
-            "Academic and institutional collaborations",
-            "Shared research resources and facilities"
+            "Latest platform announcements and academic updates",
+            "Upcoming conference and research seminar details",
+            "Training programs and educational workshops",
+            "Inter-institutional collaboration matching",
+            "Information on shared research assets and facilities"
         ]
     },
     {
         icon: BookOpen,
         ui: "text-emerald-500 w-4 h-4 sm:w-5 sm:h-5",
-        title: "Publications",
-        description:
-            "A platform for sharing academic and research-related content within the university community. This section is intended for academic showcases and educational content only — not for publishing peer-reviewed academic journals.",
+        title: "Research Showcases",
+        description: "A platform for broadcasting and simplifying academic content. This section is built for community visibility and educational highlights — not for publishing peer-reviewed academic journals.",
         features: [
-            "Magazine articles and academic features",
+            "Magazine articles and academic content features",
             "Three Minute Thesis (3MT) presentations",
-            "Research posters and visual showcases",
-            "Student and faculty academic highlights",
-            "Accessible visibility for university research content"
+            "Research posters and accessible visual showcases",
+            "Student, faculty, and institutional highlight boards",
+            "Open visibility for local research developments"
         ]
     }
 ];
@@ -70,33 +69,33 @@ export const howWeSupport = [
 export const researchServices = [
     {
         icon: GraduationCap,
-        label: "Finding Supervisors",
-        ui: "text-blue-500 w-5 h-5" 
+        label: "Find Supervisors",
+        ui: "text-blue-500 w-5 h-5"
     },
     {
         icon: Briefcase,
-        label: "Research Placements",
-        ui: "text-violet-500 w-5 h-5" 
+        label: "Discover Placements",
+        ui: "text-violet-500 w-5 h-5"
     },
     {
         icon: FlaskConical,
-        label: "Sample Analysis",
-        ui: "text-green-500 w-5 h-5" 
+        label: "Sample Analysis Support",
+        ui: "text-green-500 w-5 h-5"
     },
     {
         icon: FileText,
-        label: "Scientific Writing",
-        ui: "text-amber-500 w-5 h-5" 
+        label: "Scientific Writing Guidance",
+        ui: "text-amber-500 w-5 h-5"
     },
     {
         icon: ShoppingBag,
-        label: "Research Materials",
-        ui: "text-red-500 w-5 h-5" 
+        label: "Research Resource Access",
+        ui: "text-red-500 w-5 h-5"
     },
     {
         icon: Megaphone,
-        label: "Publication Publicity",
-        ui: "text-pink-500 w-5 h-5" 
+        label: "Showcase Opportunities",
+        ui: "text-pink-500 w-5 h-5"
     }
 ];
 
@@ -106,20 +105,20 @@ export const founders = [
         image: "/founders/Thilakarathna.jpg",
         email: "epdarshananuwan@gmail.com",
         phone: "+94 71 3320 561",
-        role: "Co Founder",
+        role: "Co-Founder",
     },
     {
         name: "K P U T Egodauyana",
         image: "/founders/Egodauyana.jpg",
         email: "udithathejan@gmail.com",
         phone: "+94 71 2687 197",
-        role: "Co Founder",
+        role: "Co-Founder",
     },
     {
         name: "W G I T Gunathilaka",
         image: "/founders/Gunathilaka.jpg",
         email: "mrinduniltharaka@gmail.com",
         phone: "+94 71 3135 128",
-        role: "Co Founder",
+        role: "Co-Founder",
     }
-]
+];
