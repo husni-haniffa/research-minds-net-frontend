@@ -51,8 +51,8 @@ const ResearchStudentsForm = ({ onSuccess } : ResearchStudentsFormProps) => {
   return (
     <Card className="w-full border-0 shadow-none">
       <CardHeader>
-        <CardTitle>Research Students</CardTitle>
-        <CardDescription>Connect with students for research collaboration</CardDescription>
+        <CardTitle>Student Collaboration</CardTitle>
+        <CardDescription>Post your project details to find other students who want to collaborate or work together on research.</CardDescription>
       </CardHeader>
         <CardContent>
           <form id="research-students-submission" onSubmit={form.handleSubmit((v) => createMutation.mutate(v))}>
