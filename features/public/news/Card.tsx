@@ -41,7 +41,7 @@ const Card = ({news} : NewsCardProps) => {
     </h3>
 
     {/* Content preview */}
-    <p className="text-sm text-slate-500 leading-relaxed line-clamp-3">
+    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
       {news.content.slice(0, 500)}...
     </p>
 

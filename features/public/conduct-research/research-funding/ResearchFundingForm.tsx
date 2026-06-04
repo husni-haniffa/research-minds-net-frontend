@@ -51,8 +51,8 @@ const ResearchFundingForm = ({ onSuccess } : ResearchFundingFormProps) => {
   return (
     <Card className="w-full border-0 shadow-none">
       <CardHeader>
-        <CardTitle>Research Funding</CardTitle>
-        <CardDescription>Apply for research funding and grants</CardDescription>
+        <CardTitle>Research Funding & Support</CardTitle>
+        <CardDescription>Submit a request for funding for your project, or provide details on how you wish to contribute funds to research initiatives.</CardDescription>
       </CardHeader>
         <CardContent>
           <form id="research-funding-submission" onSubmit={form.handleSubmit((v) => createMutation.mutate(v))}>

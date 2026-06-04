@@ -52,7 +52,7 @@ const Card = ({ publication }: PublicationCardProps) => {
     <div className="h-px bg-slate-100" />
 
     {/* Abstract */}
-    <p className="text-sm text-slate-500 leading-relaxed line-clamp-3">
+    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
       {publication.abstract.slice(0, 500)}...
     </p>
 

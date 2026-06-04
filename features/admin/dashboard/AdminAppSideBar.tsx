@@ -27,7 +27,7 @@ export function AdminAppSideBar() {
           </Link>
       </SidebarHeader>
       
-      <SidebarContent className="py-3 px-1">
+      <SidebarContent className="py-3 px-3">
         {adminNavLinks.map((group) => (
           <SidebarGroup key={group.label} className="mb-4">
             <SidebarGroupLabel className="text-xs font-semibold text-blue-400 uppercase tracking-wider px-2 mb-2">
