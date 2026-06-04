@@ -8,93 +8,93 @@ import { View } from 'lucide-react'
 import { useDeleteResearchHelp, useResearchHelps } from './helps.hooks'
 import HelpsView from './HelpsView'
 import { HelpsTableSkeleton } from './Skeleton'
-import { formateDate } from '@/lib/format'
+import { formatDate, formatSriLankaDate } from '@/lib/format'
 import ButtonLoader from '@/components/ui/button-loader'
 
 const HelpsTable = ({ search }: { search: string }) => {
 
-      const [deletingId, setDeletingId] = useState<string | null>(null)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
 
   const [debouncedSearch, setDebouncedSearch] = useState(search);
   const { data, isLoading, error } = useResearchHelps()
-      const deleteMutation = useDeleteResearchHelp(setDeletingId)
+  const deleteMutation = useDeleteResearchHelp(setDeletingId)
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearch(search)
-    }, 300) 
+    }, 300)
     return () => clearTimeout(timer)
   }, [search])
 
   const isSearchingHelps = search !== debouncedSearch;
 
-  if (isLoading || isSearchingHelps) return <HelpsTableSkeleton/>
-  if (error instanceof Error) return <AlertError message={error.message}/>
+  if (isLoading || isSearchingHelps) return <HelpsTableSkeleton />
+  if (error instanceof Error) return <AlertError message={error.message} />
   if (!data || data.length === 0) return <p className='flex items-center justify-center font-semibold text-lg'>No applications submitted yet</p>
-  
+
   const filtered = data?.filter((help) =>
-      help.name.toLowerCase().includes(search.toLowerCase())
+    help.name.toLowerCase().includes(search.toLowerCase())
   )
 
   if (!filtered?.length) return <p className='flex items-center justify-center text-base'>Application not found</p>
-  
+
   return (
     <div className='bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden'>
-        <Table>
-          <TableHeader>
-              <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Degree</TableHead>
-                  <TableHead>Designation</TableHead>
-                  <TableHead>Affiliation</TableHead>
-                  <TableHead>Research Area</TableHead>
-                  <TableHead>Applied on</TableHead>
-                  <TableHead>More Info</TableHead>
-                  <TableHead>Delete</TableHead>
-              </TableRow>
-          </TableHeader>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name</TableHead>
+            <TableHead>Degree</TableHead>
+            <TableHead>Designation</TableHead>
+            <TableHead>Affiliation</TableHead>
+            <TableHead>Research Area</TableHead>
+            <TableHead>Applied on</TableHead>
+            <TableHead>More Info</TableHead>
+            <TableHead>Delete</TableHead>
+          </TableRow>
+        </TableHeader>
         <TableBody>
-            {filtered?.map((idea) => (
-                <TableRow key={idea._id}>
-                    <TableCell>
-                      <span className='text-xs mr-1 font-bold'>{idea.title}.</span>
-                      {idea.name}
-                    </TableCell>
-                    <TableCell>{idea.degree}</TableCell>
-                    <TableCell>{idea.designation}</TableCell>
-                    <TableCell>{idea.affiliation}</TableCell>
-                    <TableCell>{idea.categoryId.name}</TableCell>
-                    <TableCell>{formateDate(new Date(idea.updatedAt))}</TableCell>
-                    <TableCell>
-                      <Dialog>
-                        <DialogTrigger asChild>
-                            <Button size={'icon'} variant={'secondary'}>
-                              <View/>
-                            </Button>
-                        </DialogTrigger>
-                        <DialogHeader className='sr-only'>
-                            <DialogTitle></DialogTitle>
-                        </DialogHeader>
-                        <DialogContent>
-                            <HelpsView data={idea}/>
-                        </DialogContent>
-                      </Dialog>
-                    </TableCell>
-                    <TableCell>
-                        <ConfirmDialog
-                            onConfirm={() => deleteMutation.mutate(idea._id)}
-                            disabled={deletingId === idea._id}
-                            triggerText={
-                            deletingId === idea._id ? <ButtonLoader text="Deleting" /> : "Delete"
-                            }
-                        />
-                    </TableCell>
-              </TableRow>
-            ))}
+          {filtered?.map((help) => (
+            <TableRow key={help._id}>
+              <TableCell>
+                <span className='text-xs mr-1 font-bold'>{help.title}.</span>
+                {help.name}
+              </TableCell>
+              <TableCell>{help.degree}</TableCell>
+              <TableCell>{help.designation}</TableCell>
+              <TableCell>{help.affiliation}</TableCell>
+              <TableCell>{help.categoryId.name}</TableCell>
+              <TableCell>{formatSriLankaDate(help.updatedAt)}</TableCell>
+              <TableCell>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button size={'icon'} variant={'secondary'}>
+                      <View />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogHeader className='sr-only'>
+                    <DialogTitle></DialogTitle>
+                  </DialogHeader>
+                  <DialogContent>
+                    <HelpsView data={help} />
+                  </DialogContent>
+                </Dialog>
+              </TableCell>
+              <TableCell>
+                <ConfirmDialog
+                  onConfirm={() => deleteMutation.mutate(help._id)}
+                  disabled={deletingId === help._id}
+                  triggerText={
+                    deletingId === help._id ? <ButtonLoader text="Deleting" /> : "Delete"
+                  }
+                />
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>
-    
+
   )
 }
 

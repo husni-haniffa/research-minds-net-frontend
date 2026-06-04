@@ -3,7 +3,7 @@ import { AlertError } from '@/components/ui/alert-error'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Clock } from 'lucide-react'
-import { formateDate } from '@/lib/format'
+import { formatDate, formatSriLankaDate } from '@/lib/format'
 import { NewsArticleSkeleton } from './Skeleton'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
@@ -45,7 +45,7 @@ const ReadNews = ({ id }: { id: string }) => {
         {/* Date */}
         <div className="flex items-center gap-1.5 text-xs text-slate-400">
           <Clock className="w-3.5 h-3.5" />
-          {data?.updatedAt && formateDate(data.updatedAt)}
+          {data?.updatedAt && formatSriLankaDate(data.updatedAt)}
         </div>
 
         <div className="h-px bg-slate-100" />

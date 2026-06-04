@@ -1,6 +1,7 @@
 
 import { Card,CardHeader, CardTitle, CardDescription, CardContent, CardFooter} from '@/components/ui/card'
 import { EventResponse } from './event.types'
+import { formatSriLankaDate } from '@/lib/format'
 
 const EventView = ({event} : {event: EventResponse})  => {
   return (
@@ -46,7 +47,7 @@ const EventView = ({event} : {event: EventResponse})  => {
             <span className='font-semibold mr-3'>
                 Created:
             </span>
-            {event.createdAt}
+              {formatSriLankaDate(event.createdAt)}
         </CardFooter>
     </Card>
   )
