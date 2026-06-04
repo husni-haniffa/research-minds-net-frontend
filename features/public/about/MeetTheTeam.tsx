@@ -70,7 +70,7 @@ const MeetTheTeam = () => {
             <h3 className="text-xl font-bold text-slate-900 tracking-tight">
               {founder.name}
             </h3>
-            <p className="text-xs font-semibold text-blue-500 mt-0.5 uppercase tracking-widest">
+            <p className="text-xs font-semibold text-blue-500 mt-2 uppercase tracking-widest">
               {founder.role}
             </p>
           </div>
