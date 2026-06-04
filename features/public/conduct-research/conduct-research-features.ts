@@ -11,9 +11,9 @@ export const conductResearchFeatures = [
     {
         id: "research-idea",
         icon: Lightbulb,
-        label: "Research Idea",
+        label: "Submit a Research Idea",
         description:
-            "Share innovative research ideas with the global research community and discover collaboration opportunities with experts and students.",
+            "Share your research concept on the platform to put your ideas out there and get them noticed.",
         href: "/conduct-research/research-idea",
     },
     {
@@ -21,15 +21,15 @@ export const conductResearchFeatures = [
         icon: GraduationCap,
         label: "Research Placements",
         description:
-            "Explore research placement opportunities offered by universities, institutions, and research groups worldwide.",
+            "Find and apply for open research positions and placements in universities or organizations.",
         href: "/conduct-research/research-placements",
     },
     {
         id: "research-supervisor",
         icon: UserCog,
-        label: "Research Supervisor",
+        label: "Find a Supervisor",
         description:
-            "Connect with experienced researchers and academics who are available to supervise and guide research projects.",
+            "For students looking for an experienced academic or researcher to supervise and guide their project.",
         href: "/conduct-research/research-supervisor",
     },
     {
@@ -37,23 +37,23 @@ export const conductResearchFeatures = [
         icon: Users,
         label: "Research Students",
         description:
-            "Find motivated students and collaborators who are interested in joining research projects and contributing their skills.",
+            "For students who want to find other students to collaborate with on research projects.",
         href: "/conduct-research/research-students",
     },
     {
         id: "research-funding",
         icon: HandCoins,
-        label: "Funding",
+        label: "Research Funding",
         description:
-            "Discover funding opportunities, grants, and sponsorship programs that support research and innovation initiatives.",
+            "Apply for funding for your project, or contribute financial support and grants to ongoing research.",
         href: "/conduct-research/research-funding",
     },
     {
         id: "research-helps",
         icon: LifeBuoy,
-        label: "Research Helps",
+        label: "Research Help",
         description:
-            "Access resources, tools, and guidance that support researchers throughout the research lifecycle.",
+            "Get direct guidance, access useful tools, and find support to help you complete your work.",
         href: "/conduct-research/research-helps",
     }
 ];

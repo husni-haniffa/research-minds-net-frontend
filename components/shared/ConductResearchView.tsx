@@ -9,13 +9,13 @@ const ExternalLinkIcon = () => (
 )
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
-    <h6 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3">
+    <h6 className="text-xs font-semibold uppercase tracking-widest text-slate-950 mb-3">
         {children}
     </h6>
 )
 
 const NotProvided = () => (
-    <span className="text-slate-400 italic">Not provided</span>
+    <span className="text-slate-900 italic">Not provided</span>
 )
 
 const Divider = () => <hr className="border-slate-100" />
@@ -30,8 +30,8 @@ export const ContactInfoSection = ({ mobile, whatsapp }: { mobile?: string; what
                 { label: 'WhatsApp Number', value: whatsapp },
             ].map(({ label, value }) => (
                 <div key={label} className="flex items-center justify-between">
-                    <span className="text-sm text-slate-500">{label}</span>
-                    <span className="text-sm font-medium text-slate-800">
+                    <span className="text-sm text-slate-900">{label}</span>
+                    <span className="text-sm font-medium text-slate-950">
                         {value || <NotProvided />}
                     </span>
                 </div>
@@ -90,7 +90,7 @@ export const InfoField = ({ label, value }: { label: string; value?: string }) =
     <div>
         <SectionLabel>{label}</SectionLabel>
         {value
-            ? <p className="text-sm text-slate-700 leading-relaxed">{value}</p>
+            ? <p className="text-sm text-slate-950 leading-relaxed">{value}</p>
             : <p className="text-sm"><NotProvided /></p>
         }
     </div>

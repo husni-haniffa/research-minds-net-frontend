@@ -52,7 +52,7 @@ const ResearchIdeaForm = ({ onSuccess } : ResearchIdeaFormProps) => {
     <Card className="w-full border-0 shadow-none">
       <CardHeader>
         <CardTitle>Submit Research Idea</CardTitle>
-        <CardDescription>Share your research idea and collaboration interests</CardDescription>
+        <CardDescription>Share your research concept and collaboration interests to connect with others interested in your topic.</CardDescription>
       </CardHeader>
         <CardContent>
           <form id="research-idea-submission" onSubmit={form.handleSubmit((v) => createMutation.mutate(v))}>

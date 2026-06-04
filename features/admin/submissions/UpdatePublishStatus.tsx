@@ -28,7 +28,7 @@ const UpdatePublishStatus = ({id, defaultVisibility = "PUBLIC", live, currentSta
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
-        <Button size={'sm'} variant={'publish'} disabled={live === 'Yes' || currentStatus === "REJECTED"}>Publish</Button>
+        <Button size={'sm'} variant={'publish'} disabled={live === 'Yes' || currentStatus === "REJECTED" || currentStatus === "UNDER_REVIEW" || currentStatus === "PENDING"}>Publish</Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

@@ -50,8 +50,8 @@ const ResearchHelpsForm = ({ onSuccess } : ResearchHelpsFormProps) => {
   return (
     <Card className="w-full border-0 shadow-none">
       <CardHeader>
-        <CardTitle>Research Helps</CardTitle>
-        <CardDescription>Get help and support for your research projects</CardDescription>
+        <CardTitle>Request Research Support</CardTitle>
+        <CardDescription>Tell us what guidance or tools you need so we can provide the right support for your research work.</CardDescription>
       </CardHeader>
         <CardContent>
           <form id="research-helps-submission" onSubmit={form.handleSubmit((v) => createMutation.mutate(v))}>

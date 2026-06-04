@@ -51,8 +51,8 @@ const ResearchPlacementsForm = ({ onSuccess } : ResearchPlacementsFormProps) => 
   return (
     <Card className="w-full border-0 shadow-none">
       <CardHeader>
-        <CardTitle>Research Placements</CardTitle>
-        <CardDescription>Find research placement opportunities</CardDescription>
+        <CardTitle>Find a Research Placement</CardTitle>
+        <CardDescription>Provide your details and research interests to apply for placements in universities or organizations.</CardDescription>
       </CardHeader>
         <CardContent>
           <form id="research-placements-submission" onSubmit={form.handleSubmit((v) => createMutation.mutate(v))}>

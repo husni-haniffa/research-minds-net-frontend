@@ -23,7 +23,7 @@ const Hero = () => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: false, amount: 0.3 }}>
-        Research · Future · Life
+          Connect · Showcase · Progress
       </motion.p>
 
       <motion.h2
@@ -32,8 +32,7 @@ const Hero = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1 }}
         viewport={{ once: false, amount: 0.3 }}>
-        Built for collaboration across our{" "}
-        <span className="text-blue-500">academic community</span>
+            Built for collaboration across the <span className="text-blue-500">research community</span>
       </motion.h2>
 
       <motion.p
@@ -42,9 +41,9 @@ const Hero = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2 }}
         viewport={{ once: false, amount: 0.3 }}>
-        Created for our university&apos;s students, researchers, and academics,
-        Research Minds Net supports interdisciplinary collaboration, knowledge
-        sharing, and research development within a single connected platform.
+            Research Minds Net is a shared ecosystem built for students, academics,
+            and organizations in Sri Lanka. We connect people with supervisors, institutional placements,
+            funding resources, and structured support channels all inside one destination.
       </motion.p>
 
       <div className="w-12 h-px bg-blue-300" />

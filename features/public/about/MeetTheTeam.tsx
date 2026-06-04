@@ -18,7 +18,7 @@ const MeetTheTeam = () => {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: false, amount: 0.3 }}>
-      Founders
+          The Platform Founders
     </motion.p>
     <motion.h2
       className="text-3xl md:text-4xl xl:text-5xl font-bold text-slate-800 leading-tight"
@@ -26,15 +26,15 @@ const MeetTheTeam = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.1 }}
       viewport={{ once: false, amount: 0.3 }}>
-      Meet the <span className="text-blue-500">Visionary Team</span>
+          Meet the <span className="text-blue-500">Team Behind It</span>
     </motion.h2>
     <motion.p
-      className="text-sm text-slate-400 max-w-md mt-1"
+      className="text-sm text-slate-500 max-w-md mt-1"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.2 }}
       viewport={{ once: false, amount: 0.3 }}>
-      The people behind Research Minds Net — building the future of academic collaboration.
+          The people behind Research Minds Net — dedicated to connecting the Sri Lankan academic space.
     </motion.p>
   </header>
 
@@ -70,7 +70,7 @@ const MeetTheTeam = () => {
             <h3 className="text-xl font-bold text-slate-900 tracking-tight">
               {founder.name}
             </h3>
-            <p className="text-xs font-semibold text-blue-500 mt-0.5 uppercase tracking-widest">
+            <p className="text-xs font-semibold text-blue-500 mt-2 uppercase tracking-widest">
               {founder.role}
             </p>
           </div>
