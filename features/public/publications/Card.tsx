@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { PublicationCardProps } from './publication.types'
-import { formatDate, formatSriLankaDate } from '@/lib/format'
+import { formatSriLankaDate } from '@/lib/format'
 import SocialLinks from './SocialLinks'
 import { motion } from "framer-motion"
 

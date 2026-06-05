@@ -8,7 +8,7 @@ import { View } from 'lucide-react'
 import { useDeleteResearchPlacement, useResearchPlacements } from './placements.hooks'
 import PlacementsView from './PlacementsView'
 import { PlacementsTableSkeleton } from './Skeleton'
-import { formatDate, formatSriLankaDate } from '@/lib/format'
+import { formatSriLankaDate } from '@/lib/format'
 import ButtonLoader from '@/components/ui/button-loader'
 
 const PlacementsTable = ({ search }: { search: string }) => {

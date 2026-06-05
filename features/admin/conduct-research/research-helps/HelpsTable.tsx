@@ -8,7 +8,7 @@ import { View } from 'lucide-react'
 import { useDeleteResearchHelp, useResearchHelps } from './helps.hooks'
 import HelpsView from './HelpsView'
 import { HelpsTableSkeleton } from './Skeleton'
-import { formatDate, formatSriLankaDate } from '@/lib/format'
+import { formatSriLankaDate } from '@/lib/format'
 import ButtonLoader from '@/components/ui/button-loader'
 
 const HelpsTable = ({ search }: { search: string }) => {

@@ -10,7 +10,7 @@ import { AlertError } from '@/components/ui/alert-error'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import NewsView from './NewsView'
 import { View } from 'lucide-react'
-import { formatDate, formatSriLankaDate } from '@/lib/format'
+import { formatSriLankaDate } from '@/lib/format'
 
 const NewsTable = ({ search }: { search: string }) => {
 

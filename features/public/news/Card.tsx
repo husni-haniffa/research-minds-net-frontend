@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { Button } from '@/components/ui/button'
 import { NewsResponse } from '@/features/admin/news/news.types'
-import { formatDate, formatSriLankaDate } from '@/lib/format'
+import { formatSriLankaDate } from '@/lib/format'
 import { Variant } from 'framer-motion'
 import { ArrowRight, Clock } from 'lucide-react'
 import Link from 'next/link'

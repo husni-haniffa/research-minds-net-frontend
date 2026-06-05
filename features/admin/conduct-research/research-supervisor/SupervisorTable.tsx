@@ -8,7 +8,7 @@ import { View } from 'lucide-react'
 import { useDeleteResearcSupervisor, useResearchSupervisor } from './supervisor.hooks'
 import SupervisorView from './SupervisorView'
 import { SupervisorTableSkeleton } from './Skeleton'
-import { formatDate, formatSriLankaDate } from '@/lib/format'
+import { formatSriLankaDate } from '@/lib/format'
 import ButtonLoader from '@/components/ui/button-loader'
 
 const SupervisorTable = ({ search }: { search: string }) => {
