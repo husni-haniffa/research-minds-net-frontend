@@ -10,6 +10,7 @@ export function useSubmissionByUserId() {
     return useQuery({
         queryKey: ["submissions", userId],
         enabled: !!userId,
+        refetchOnWindowFocus: true,
         queryFn: async () => {
             const token = await getToken()
             if (!token) throw new Error("Not authenticated")

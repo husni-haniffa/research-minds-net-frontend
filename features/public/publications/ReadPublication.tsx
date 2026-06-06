@@ -1,9 +1,9 @@
 "use client"
 import { usePublicationById } from './publication.hooks'
 import Link from 'next/link'
-import { Download} from 'lucide-react'
+import { Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { formateDate } from '@/lib/format'
+import { formatSriLankaDate } from '@/lib/format'
 import { AlertError } from '@/components/ui/alert-error'
 import { ReadPublicationSkeleton } from './Skeleton'
 import { motion } from 'framer-motion'
@@ -33,7 +33,7 @@ const ReadPublication = ({ id }: { id: string }) => {
             </span>
           </div>
           <span className="text-xs text-slate-400">
-            Published on {data?.updatedAt ? formateDate(data.updatedAt) : "N/A"}
+            Published on {data?.updatedAt ? formatSriLankaDate(data.updatedAt) : "N/A"}
           </span>
         </div>
 

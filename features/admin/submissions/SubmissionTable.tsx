@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button"
 import AddSocialMediaLinks from "./AddSocialMediaLinks"
 import EditSocialMediaLinks from "./EditSocialMediaLinks"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { formatSriLankaDate } from "@/lib/format"
 
 type StatusFilter = "ALL" | "PENDING" | "UNDER_REVIEW" | "ACCEPTED" | "REJECTED"
 type PublishedFilter = "ALL" | "YES" | "NO"
@@ -169,7 +170,7 @@ const SubmissionTable = ({ search }: { search: string }) => {
                     </Dialog>
                   </div>
                 </TableCell>
-                <TableCell>{submission.updatedAt}</TableCell>
+                <TableCell>{formatSriLankaDate(submission.updatedAt)}</TableCell>
                 <TableCell>
                   <UpdatePublishStatus id={submission._id} live={submission.isPublished === true ? "Yes" : "No"} currentStatus={submission.status} />
                 </TableCell>

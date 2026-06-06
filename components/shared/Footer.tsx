@@ -89,13 +89,13 @@ const Footer = () => {
       <span className="text-xs text-slate-500">
         &copy; {new Date().getFullYear()} Research Minds Net. All rights reserved.
       </span>
-      <Link
+      <a
         href="/Policy Note.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="text-xs text-slate-500 hover:text-white transition-colors duration-200">
         Privacy Policy
-      </Link>
+      </a>
     </div>
 
   </div>

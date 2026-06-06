@@ -1,4 +1,4 @@
-import { Home, LayoutDashboard, Layers, Newspaper, CalendarDays, FileText, Users, ClipboardList, BookOpenCheck, GraduationCap, HandCoins, LifeBuoy, Lightbulb, UserCog } from "lucide-react"
+import { Home, LayoutDashboard, Layers, Newspaper, CalendarDays, FileText, Users, BookOpenCheck, GraduationCap, HandCoins, LifeBuoy, Lightbulb, UserCog } from "lucide-react"
 
 export const adminNavLinks = [
     {
