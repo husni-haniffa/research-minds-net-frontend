@@ -1,5 +1,6 @@
 import { Card,CardHeader, CardTitle, CardContent, CardFooter} from '@/components/ui/card'
 import { NewsResponse } from './news.types'
+import { formatSriLankaDate } from '@/lib/format'
 
 const NewsView = ({news} : {news: NewsResponse})  => {
   return (
@@ -16,7 +17,7 @@ const NewsView = ({news} : {news: NewsResponse})  => {
             <span className='font-semibold mr-3'>
                 Created:
             </span>
-            {news.createdAt}
+            {formatSriLankaDate(news.createdAt)}
         </CardFooter>
     </Card>
   )

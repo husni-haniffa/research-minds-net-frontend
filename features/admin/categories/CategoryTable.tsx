@@ -8,6 +8,7 @@ import ButtonLoader from '@/components/ui/button-loader'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { CategoryTableSkeleton } from './Skeleton'
 import { AlertError } from '@/components/ui/alert-error'
+import { formatSriLankaDate } from '@/lib/format'
 
 const CategoryTable = ({ search }: { search: string }) => {
 
@@ -52,8 +53,10 @@ const CategoryTable = ({ search }: { search: string }) => {
             {filtered?.map((category) => (
                 <TableRow key={category._id}>
                     <TableCell>{category.name}</TableCell>
-                    <TableCell>{category.createdAt}</TableCell>
-                    <TableCell>{category.updatedAt}</TableCell>
+                    <TableCell>
+                        {formatSriLankaDate(category.createdAt)}
+                    </TableCell>
+                    <TableCell>{formatSriLankaDate(category.updatedAt)}</TableCell>
                     <TableCell>
                         <Dialog open={editingId === category._id} onOpenChange={(open) => setEditingId(open ? category._id : null)}>
                             <DialogTrigger asChild>
