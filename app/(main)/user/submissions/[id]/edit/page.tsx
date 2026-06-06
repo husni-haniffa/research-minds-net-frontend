@@ -1,5 +1,6 @@
 "use client"
 import { Badge } from "@/components/ui/badge"
+import { UserSubmissionEditAlert, UserSubmissionGuideAlert } from "@/components/ui/UserSubmissionAlert"
 import EditSubmissionForm from "@/features/user/submissions/EditSubmissionForm"
 import { useRouter } from "next/navigation"
 import { use } from "react"
@@ -14,12 +15,8 @@ const EditSubmissionPage = ({ params }: PageProps) => {
 const router = useRouter()
   return (
     <div className="container pt-6 xl:pt-12 pb-16 xl:pb-24 flex flex-col gap-6">
-      <div>
-        <Badge className="bg-red-50 text-red-500 text-sm rounded-md">
-          Submitting this form will replace all existing details of your submission.
-          Any uploaded files will be overwritten. Please review carefully before submitting.
-        </Badge>
-      </div>
+      <UserSubmissionEditAlert/>
+      <UserSubmissionGuideAlert/>
       <EditSubmissionForm submissionId={id} onSuccess={() => router.push('/user/submissions')}/>
     </div>
   )
