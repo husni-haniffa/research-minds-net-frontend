@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { AlertError } from '@/components/ui/alert-error'
 import { SubmissionTableSkeleton } from './Skeleton'
 import StatusBadge from '@/components/ui/status-badge'
+import { formatSriLankaDate } from '@/lib/format'
 
 const SubmissionsTable = ({ search }: { search: string }) => {
 
@@ -61,8 +62,8 @@ const SubmissionsTable = ({ search }: { search: string }) => {
                             <Download/>
                         </Link>
                     </TableCell>
-                    <TableCell>{submission.createdAt}</TableCell>
-                    <TableCell>{submission.updatedAt}</TableCell>
+                    <TableCell>{formatSriLankaDate(submission.createdAt)}</TableCell>
+                    <TableCell>{formatSriLankaDate(submission.updatedAt)}</TableCell>
                      <TableCell>
                         {submission.status === 'PENDING' ? (
                             <Link href={`/user/submissions/${submission._id}/edit`}>

@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import EventView from './EventView'
 import { View } from 'lucide-react'
 import Link from 'next/link'
+import { formatSriLankaDate } from '@/lib/format'
 
 const EventTable = ({ search }: { search: string }) => {
 
@@ -68,7 +69,7 @@ const EventTable = ({ search }: { search: string }) => {
                       </DialogContent>
                     </Dialog>
                   </TableCell>                  
-                  <TableCell>{event.updatedAt}</TableCell>
+                 <TableCell>{formatSriLankaDate(event.updatedAt)}</TableCell>
                   <TableCell>
                       <Link href={`/admin/events/${event._id}/edit`}>
                         <Button size="sm" variant={'edit'}>

@@ -8,6 +8,7 @@ import ButtonLoader from '@/components/ui/button-loader'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { ResearchTypeTableSkeleton } from './Skeleton'
 import { AlertError } from '@/components/ui/alert-error'
+import { formatSriLankaDate } from '@/lib/format'
 
 const ResearchTypeTable = ({ search }: { search: string }) => {
 
@@ -52,8 +53,8 @@ const ResearchTypeTable = ({ search }: { search: string }) => {
             {filtered?.map((researchType) => (
                 <TableRow key={researchType._id}>
                     <TableCell>{researchType.name}</TableCell>
-                    <TableCell>{researchType.createdAt}</TableCell>
-                    <TableCell>{researchType.updatedAt}</TableCell>
+                   <TableCell>{formatSriLankaDate(researchType.createdAt)}</TableCell>
+                    <TableCell>{formatSriLankaDate(researchType.updatedAt)}</TableCell>
                     <TableCell>
                         <Dialog open={editingId === researchType._id} onOpenChange={(open) => setEditingId(open ? researchType._id : null)}>
                             <DialogTrigger asChild>

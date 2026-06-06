@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { SignedIn, SignedOut } from "@clerk/nextjs"
-import { ArrowRight, Award, Handshake } from "lucide-react"
+import { ArrowRight, Handshake } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from 'framer-motion'

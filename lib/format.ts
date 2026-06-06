@@ -1,4 +1,17 @@
-export const formateDate = (date: Date) => {
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+export function formatSriLankaDate(date: string | Date) {
+    return dayjs(date)
+        .tz("Asia/Colombo")
+        .format("DD MMM YYYY, hh:mm A");
+}
+
+export const formatDate = (date: Date) => {
     return new Date(date).toLocaleDateString("en-US", {
         weekday: "short",
         year: "numeric",
@@ -7,7 +20,7 @@ export const formateDate = (date: Date) => {
     })
 }
 
-export const formateTime = (time: string) => {
+export const formatTime = (time: string) => {
     const [hour, minute] = time.split(":").map(Number)
     const period = hour >= 12 ? "PM" : "AM"
     const hour12 = hour % 12 === 0 ? 12 : hour % 12
