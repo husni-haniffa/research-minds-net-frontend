@@ -24,7 +24,7 @@ const Card = ({ news }: NewsCardProps) => {
       {news.imageUrl && (
         <div className="relative w-full h-48 overflow-hidden">
           <Image
-            src={news.imageUrl}
+            src={`${news.imageUrl}?v=${news.updatedAt}`}
             alt={news.title}
             fill
             priority
