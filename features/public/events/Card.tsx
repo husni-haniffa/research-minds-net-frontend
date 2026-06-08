@@ -16,7 +16,7 @@ const Card = ({ event }: EventCardProps) => {
       {event.imageUrl && (
         <div className="relative overflow-hidden h-48">
           <Image
-            src={event.imageUrl}
+            src={`${event.imageUrl}?v=${event.updatedAt}`}
             alt={event.title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
