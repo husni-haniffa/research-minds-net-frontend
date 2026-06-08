@@ -63,7 +63,7 @@ const HelpsTable = ({ search }: { search: string }) => {
               <TableCell>{help.degree}</TableCell>
               <TableCell>{help.designation}</TableCell>
               <TableCell>{help.affiliation}</TableCell>
-              <TableCell>{help.categoryId.name}</TableCell>
+              <TableCell>{help.categoryId?.name}</TableCell>
               <TableCell>{formatSriLankaDate(help.updatedAt)}</TableCell>
               <TableCell>
                 <Dialog>
