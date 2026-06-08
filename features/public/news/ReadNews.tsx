@@ -27,7 +27,7 @@ const ReadNews = ({ id }: { id: string }) => {
         {data?.imageUrl && (
           <div className="relative w-full h-72 md:h-96 overflow-hidden rounded-2xl">
             <Image
-              src={data.imageUrl}
+              src={`${data.imageUrl}?v=${data.updatedAt}`}
               alt={data.title}
               fill
               priority
