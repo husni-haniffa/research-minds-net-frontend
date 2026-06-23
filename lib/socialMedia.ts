@@ -4,26 +4,26 @@ export const socialMedia = [
     {
         id: 1,
         icon: FaWhatsapp,
-        href: ""
+        href: "https://wa.me/94771234567"
     },
     {
         id: 2,
         icon: FaLinkedin,
-        href: ""
+        href: "https://www.linkedin.com/in/researchmindsnet"
     },
     {
         id: 3,
         icon: FaYoutube,
-        href: ""
+        href: "https://www.youtube.com/channel/UC3UuzlPKqoW702IAjNBFH0g"
     },
     {
         id: 4,
         icon: FaFacebook,
-        href: ""
+        href: "https://www.facebook.com/ResearchMindsNet/"
     },
     {
         id: 5,
         icon: FaInstagram,
-        href: ""
+        href: "https://www.instagram.com/researchmindsnet/"
     }
 ]

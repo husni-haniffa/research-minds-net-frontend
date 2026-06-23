@@ -32,6 +32,8 @@ const Footer = () => {
             <Link
               key={social.id}
               href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-all duration-200">
               <social.icon size={15} />
             </Link>
@@ -51,6 +53,8 @@ const Footer = () => {
               <Link
                 key={contact.id}
                 href={contact.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-slate-400 hover:text-white transition-colors duration-200">
                 {contact.label}
               </Link>
