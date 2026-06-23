@@ -4,7 +4,7 @@ export const contactInfo = [
     {
         id: 1,
         label: "077 1234 567",
-        href: ""
+        href: "https://wa.me/94771234567"
     },
     {
         id: 2,
@@ -14,7 +14,7 @@ export const contactInfo = [
     {
         id: 3,
         label: "Colombo, Sri Lanka",
-        href: ""
+        href: "https://maps.google.com/?q=Colombo,Sri+Lanka"
     },
 ]
 

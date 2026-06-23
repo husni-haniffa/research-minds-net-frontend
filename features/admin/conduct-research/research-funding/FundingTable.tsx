@@ -65,7 +65,7 @@ const FundingTable = ({ search }: { search: string }) => {
               <TableCell>{funding.degree}</TableCell>
               <TableCell>{funding.designation}</TableCell>
               <TableCell>{funding.affiliation}</TableCell>
-              <TableCell>{funding.categoryId.name}</TableCell>
+              <TableCell>{funding.categoryId?.name}</TableCell>
               <TableCell>{funding.fundingAmount}</TableCell>
               <TableCell>{formatSriLankaDate(funding.updatedAt)}</TableCell>
               <TableCell>

@@ -60,7 +60,7 @@ const IdeaTable = ({ search }: { search: string }) => {
               </TableCell>
               <TableCell>{idea.designation}</TableCell>
               <TableCell>{idea.affiliation}</TableCell>
-              <TableCell>{idea.categoryId.name}</TableCell>
+              <TableCell>{idea.categoryId?.name}</TableCell>
               <TableCell>{formatSriLankaDate(idea.updatedAt)}</TableCell>
               <TableCell>
                 <Dialog>
