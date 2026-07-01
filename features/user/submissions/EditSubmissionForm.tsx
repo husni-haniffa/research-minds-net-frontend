@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Textarea } from "@/components/ui/textarea"
 import { KeywordsInput } from "@/components/ui/keywords-input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { editFormSchema, EditFormSchema, EditSubmissionFormProps } from "./submission.types"
+import { editFormSchema, EditFormSchema, EditSubmissionFormProps, getFileName } from "./submission.types"
 import { useEffect } from "react"
 import { useSubmissionById, useUpdateSubmission } from "./submission.hooks"
 import { useCategories } from "@/features/admin/categories/category.hooks"
@@ -16,6 +16,7 @@ import { SelectSkeleton, SubmissionFormSkeleton } from "./Skeleton"
 import { AlertError } from "@/components/ui/alert-error"
 import { useRouter } from "next/navigation"
 import { useResearchTypes } from "@/features/admin/research-types/research-type.hooks"
+import Link from "next/link"
 
 const EditSubmissionForm = ({ submissionId, onSuccess } : EditSubmissionFormProps) => {
 
@@ -153,24 +154,38 @@ const EditSubmissionForm = ({ submissionId, onSuccess } : EditSubmissionFormProp
                     </Field>
                   )}
                 />
-                <Controller
-                  name="file"
-                  control={form.control}
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel>Replace Research Paper</FieldLabel>
-                        <Input
-                          type="file"
-                          accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                          onChange={(e) => field.onChange(e.target.files?.[0])}
-                          className="text-xs xl:text-sm"
-                        />
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </Field>
+            <Controller
+              name="file"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel>Replace Research Paper</FieldLabel>
+
+                  {data?.filePath && (
+                    <div className="flex items-center gap-2 text-xs xl:text-sm mb-1">
+                      <span className="text-muted-foreground">Existing file:</span>
+                      <Link
+                        href={data.filePath}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline underline-offset-2 text-blue-500"
+                      >
+                        {getFileName(data.filePath)}
+                      </Link>
+                    </div>
                   )}
-                />
+
+                  <Input
+                    type="file"
+                    accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    onChange={(e) => field.onChange(e.target.files?.[0])}
+                    className="text-xs xl:text-sm"
+                  />
+
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                </Field>
+              )}
+            />
               <Controller
                 name="categoryId"
                 control={form.control}
