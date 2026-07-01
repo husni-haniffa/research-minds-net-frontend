@@ -17,7 +17,7 @@ export interface UserSubmissionResponse {
     title: string
     abstract: string
     keywords: string[]
-    fileUrl: string
+    filePath: string
     status: Status
     isPublished: boolean
     createdAt: string
@@ -94,6 +94,23 @@ export const editFormSchema = formSchema.extend({
         .optional()
 
 })
+
+export function getFileName(fileUrl: string) {
+    const clean = fileUrl.split("?")[0]
+
+    const encoded =
+        clean.substring(
+            clean.lastIndexOf("/") + 1
+        )
+
+    const decoded =
+        decodeURIComponent(encoded)
+
+    return decoded.replace(
+        /^[a-f0-9-]+-/,
+        ""
+    )
+}
 
 
 
