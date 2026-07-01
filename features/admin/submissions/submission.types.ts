@@ -16,7 +16,7 @@ export interface SubmissionResponse {
     }
     title: string
     abstract: string
-    fileUrl: string
+    filePath: string
     status: Status
     isPublished: boolean
     accessLevel: string

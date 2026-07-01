@@ -58,7 +58,8 @@ const SubmissionsTable = ({ search }: { search: string }) => {
                     <TableCell>{submission.categoryId.name}</TableCell>
                     <TableCell> <StatusBadge status={submission.status}/></TableCell>
                     <TableCell>
-                        <Link href={submission.fileUrl} target='_blank'>
+                        <Link href={submission.filePath} target="_blank"
+                            rel="noopener noreferrer">
                             <Download/>
                         </Link>
                     </TableCell>

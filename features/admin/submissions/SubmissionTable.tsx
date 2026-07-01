@@ -122,7 +122,8 @@ const SubmissionTable = ({ search }: { search: string }) => {
                   </Dialog>
                 </TableCell>
                 <TableCell>
-                  <Link href={submission.fileUrl} target="_blank"><Download /></Link>
+                  <Link href={submission.filePath} target="_blank"
+                    rel="noopener noreferrer"><Download /></Link>
                 </TableCell>
                 <TableCell>
                   <StatusBadge status={submission.status} />
