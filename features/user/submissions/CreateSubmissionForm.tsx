@@ -155,7 +155,6 @@ const CreateSubmissionForm = ({ onSuccess } : CreateSubmissionFormProps) => {
                         <span className="text-red-500">*</span>
                       </FieldLabel>
                         <Input
-                          key={field.value ? "file-set" : "file-empty"}
                           type="file"
                           accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                           onChange={(e) => field.onChange(e.target.files?.[0])}
