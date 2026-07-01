@@ -3,8 +3,8 @@ import { CheckCircle, Lock, Users, FlaskConical } from "lucide-react"
 export const contactInfo = [
     {
         id: 1,
-        label: "077 1234 567",
-        href: "https://wa.me/94771234567"
+        label: "071 332 0561",
+        href: "https://wa.me/94713320561"
     },
     {
         id: 2,
@@ -14,7 +14,7 @@ export const contactInfo = [
     {
         id: 3,
         label: "Colombo, Sri Lanka",
-        href: "https://maps.google.com/?q=Colombo,Sri+Lanka"
+        href: "google.com/maps?ll=6.981907,81.076433&z=15&t=m&hl=en&gl=LK&mapclient=embed&cid=2150750778655597899"
     },
 ]
 
