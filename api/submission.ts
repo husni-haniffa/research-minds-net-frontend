@@ -28,6 +28,23 @@ export const submissionUnderReview = async (id: string, token: string) => {
     return result.message
 }
 
+
+export const submissionRequestChanges = async (id: string, token: string, message: string) => {
+    const response = await fetch(`${BASE_URL}/submissions/request-changes/${id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ message }),
+    })
+    const result = await response.json()
+    if (!response.ok) {
+        throw new Error(result.message || "Failed to update submission status")
+    }
+    return result.message
+}
+
 export const submissionApproved = async (id: string, token: string) => {
     const response = await fetch(`${BASE_URL}/submissions/accept/${id}`, {
         method: 'PUT',
@@ -42,12 +59,14 @@ export const submissionApproved = async (id: string, token: string) => {
     return result.message
 }
 
-export const submissionRejected = async (id: string, token: string) => {
+export const submissionRejected = async (id: string, token: string, reason: string) => {
     const response = await fetch(`${BASE_URL}/submissions/reject/${id}`, {
         method: 'PUT',
         headers: {
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({ reason }),
     })
     const result = await response.json()
     if (!response.ok) {

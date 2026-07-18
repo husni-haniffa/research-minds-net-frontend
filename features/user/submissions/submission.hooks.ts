@@ -34,7 +34,7 @@ export function useSubmissionById(id: string) {
 }
 
 export function useCreateSubmission(onSuccess?: () => void) {
-    const { getToken, userId,  } = useAuth()
+    const { getToken, userId } = useAuth()
     const { user } = useUser()
     const queryClient = useQueryClient()
 
@@ -60,6 +60,7 @@ export function useCreateSubmission(onSuccess?: () => void) {
         onSuccess: () => {
             toast.success("Submission created")
             queryClient.invalidateQueries({ queryKey: ["submissions"] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", userId] })
             onSuccess?.()
         },
         onError: (err: Error) => {
@@ -95,6 +96,8 @@ export function useUpdateSubmission(submissionId: string, onSuccess?: () => void
         onSuccess: () => {
             toast.success("Submission updated")
             queryClient.invalidateQueries({ queryKey: ["submissions"] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", userId] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", submissionId] })
             onSuccess?.()
         },
         onError: (err: Error) => {

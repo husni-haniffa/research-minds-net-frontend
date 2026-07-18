@@ -4,4 +4,5 @@ export const navLinks = [
     { name: "Events", href: "/events" },
     { name: "Publications", href: "/publications" },
     { name: "About Us", href: "/about" },
+    { name: "My Account", href: "/user/profile"}
 ]

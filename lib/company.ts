@@ -16,6 +16,11 @@ export const contactInfo = [
         label: "Colombo, Sri Lanka",
         href: "google.com/maps?ll=6.981907,81.076433&z=15&t=m&hl=en&gl=LK&mapclient=embed&cid=2150750778655597899"
     },
+    {
+        id: 4,
+        label: "Help & Support",
+        href: "/support",
+    }
 ]
 
 

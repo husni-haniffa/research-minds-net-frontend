@@ -1,4 +1,5 @@
 "use client"
+import UserBanner from '@/components/shared/UserBanner'
 import NewsCard from './NewsCard'
 import { motion } from 'framer-motion'
 
@@ -31,6 +32,7 @@ const PublicNews = () => {
                   Read the latest announcements, platform updates, and stories from across the research community.
               </motion.p>
           </header>
+        <UserBanner/>
         <NewsCard/>
     </section>
   )

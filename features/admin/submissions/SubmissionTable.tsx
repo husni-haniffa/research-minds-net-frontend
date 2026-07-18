@@ -18,7 +18,7 @@ import EditSocialMediaLinks from "./EditSocialMediaLinks"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { formatSriLankaDate } from "@/lib/format"
 
-type StatusFilter = "ALL" | "PENDING" | "UNDER_REVIEW" | "ACCEPTED" | "REJECTED"
+type StatusFilter = "ALL" | "PENDING" | "UNDER_REVIEW" | "CHANGES_REQUESTED" | "ACCEPTED" | "REJECTED"
 type PublishedFilter = "ALL" | "YES" | "NO"
 
 const SubmissionTable = ({ search }: { search: string }) => {
@@ -66,6 +66,7 @@ const SubmissionTable = ({ search }: { search: string }) => {
             <SelectItem value="ALL">All statuses</SelectItem>
             <SelectItem value="PENDING">Pending</SelectItem>
             <SelectItem value="UNDER_REVIEW">Under review</SelectItem>
+            <SelectItem value="CHANGES_REQUESTED">Changes Requested</SelectItem>
             <SelectItem value="ACCEPTED">Accepted</SelectItem>
             <SelectItem value="REJECTED">Rejected</SelectItem>
           </SelectContent>
@@ -94,6 +95,7 @@ const SubmissionTable = ({ search }: { search: string }) => {
               <TableHead>File</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Update</TableHead>
+              <TableHead>Message</TableHead>
               <TableHead>Live</TableHead>
               <TableHead>Access</TableHead>
               <TableHead>Social Media</TableHead>
@@ -122,14 +124,51 @@ const SubmissionTable = ({ search }: { search: string }) => {
                   </Dialog>
                 </TableCell>
                 <TableCell>
-                  <Link href={submission.filePath} target="_blank"
+                  <Link href={submission.fileUrl} target="_blank"
                     rel="noopener noreferrer"><Download /></Link>
                 </TableCell>
                 <TableCell>
                   <StatusBadge status={submission.status} />
                 </TableCell>
                 <TableCell>
-                  <UpdateSubmissionStatus id={submission._id} currentStatus={submission.status} />
+                  <UpdateSubmissionStatus id={submission._id} currentStatus={submission.status} revisionCount={submission.revisionCount} />
+                </TableCell>
+                <TableCell>
+                  {submission.status === 'CHANGES_REQUESTED' && (
+                    <p className="text-xs text-amber-600 mb-1">Waiting on user</p>
+                  )}
+                  {submission.status === 'UNDER_REVIEW' && submission.revisionCount > 0 && (
+                    <p className="text-xs text-blue-600 mb-1">Resubmitted — needs final review</p>
+                  )}
+
+                  {submission.reviewMessage && (
+                    submission.status === 'CHANGES_REQUESTED' ||
+                    submission.status === 'REJECTED' ||
+                    (submission.status === 'UNDER_REVIEW' && submission.revisionCount > 0)
+                  ) ? (
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button size="sm" variant="secondary">
+                          {submission.status === 'REJECTED' ? 'View Reason' : 'View Message'}
+                        </Button>
+                      </DialogTrigger>
+                      <DialogHeader className='sr-only'>
+                        <DialogTitle>
+                          {submission.status === 'REJECTED' ? 'Rejection Reason' : 'Requested Changes'}
+                        </DialogTitle>
+                      </DialogHeader>
+                      <DialogContent>
+                        <h3 className="font-medium text-sm text-slate-950 mb-2">
+                          {submission.status === 'REJECTED'
+                            ? 'Why you rejected this'
+                            : 'What you asked the user to change'}
+                        </h3>
+                        <p className="text-sm text-slate-900 whitespace-pre-wrap">
+                          {submission.reviewMessage}
+                        </p>
+                      </DialogContent>
+                    </Dialog>
+                  ) : null}
                 </TableCell>
                 <TableCell>{submission.isPublished === true ? "Yes" : "No"}</TableCell>
                 <TableCell>{submission.accessLevel}</TableCell>
