@@ -1,5 +1,4 @@
 "use client"
-import { Badge } from "@/components/ui/badge"
 import { UserSubmissionEditAlert, UserSubmissionGuideAlert } from "@/components/ui/UserSubmissionAlert"
 import EditSubmissionForm from "@/features/user/submissions/EditSubmissionForm"
 import { useRouter } from "next/navigation"
