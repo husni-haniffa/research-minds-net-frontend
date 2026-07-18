@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ClientProviders from "@/components/shared/ClientProviders";
 import { Toaster } from "sonner";
+import { VerifyUserProvider } from "@/components/shared/VerifyUserProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,10 +37,14 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${poppins.className} ${geistSans.variable} ${geistMono.variable} antialiased max-w-full`}>
-          <ClientProviders>{children}</ClientProviders>
-          <Toaster position="top-center" richColors/>
+          <ClientProviders>
+            <VerifyUserProvider>
+              {children}
+            </VerifyUserProvider>
+          </ClientProviders>
+          <Toaster position="top-center" richColors />
         </body>
       </html>
-    </ClerkProvider> 
+    </ClerkProvider>
   );
 }

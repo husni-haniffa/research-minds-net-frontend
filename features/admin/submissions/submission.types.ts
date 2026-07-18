@@ -1,6 +1,6 @@
 import z from "zod"
 
-type Status = 'PENDING' | 'UNDER_REVIEW' | 'REJECTED' | 'ACCEPTED' 
+type Status = 'PENDING' | 'UNDER_REVIEW' | "CHANGES_REQUESTED" | 'REJECTED' | 'ACCEPTED' 
 
 export interface SubmissionResponse {
     _id: string
@@ -16,6 +16,7 @@ export interface SubmissionResponse {
     }
     title: string
     abstract: string
+    filePath: string
     fileUrl: string
     status: Status
     isPublished: boolean
@@ -26,6 +27,8 @@ export interface SubmissionResponse {
         instagram?: string
         linkedin?: string
     }
+    revisionCount: number
+    reviewMessage: string
     createdAt: string
     updatedAt: string
 }
