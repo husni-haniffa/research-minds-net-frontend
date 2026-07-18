@@ -54,7 +54,7 @@ const HelpPage = () => {
             <h3 className="mt-3 text-sm font-semibold text-slate-950">{title}</h3>
             <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">{description}</p>
 
-            <div className="mt-4 flex flex-col gap-2 pt-1 mt-auto">
+            <div className="flex flex-col gap-2 pt-1 mt-auto">
               <a
                 href={`mailto:${email}`}
                 className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-medium text-blue-600 transition-colors hover:bg-blue-50"
