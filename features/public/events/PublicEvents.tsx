@@ -13,7 +13,7 @@ const PublicEvents = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: false, amount: 0.3 }}>
-          What's Happening
+          What&apos;s Happening
         </motion.p>
         <motion.h2
           className="text-3xl md:text-4xl xl:text-5xl font-bold text-slate-800 leading-tight"

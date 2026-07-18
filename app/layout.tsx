@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
-// @ts-ignore: allow side-effect css import without module declaration
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ClientProviders from "@/components/shared/ClientProviders";

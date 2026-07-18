@@ -99,13 +99,13 @@ const SubmissionsTable = ({ search }: { search: string }) => {
                                       </DialogHeader>
                                       <DialogContent>
                                           <h3 className="font-medium text-sm text-slate-950 mb-2">
-                                              You've resubmitted your changes
+                                              You&apos;ve resubmitted your changes
                                           </h3>
                                           <p className="text-sm text-slate-900 whitespace-pre-wrap">
                                               {submission.reviewMessage}
                                           </p>
                                           <p className="text-xs text-slate-500 mt-3">
-                                              This was the feedback you addressed. It's back with the reviewer now — no further edits are needed from you.
+                                              This was the feedback you addressed. It&apos;s back with the reviewer now — no further edits are needed from you.
                                           </p>
                                       </DialogContent>
                                   </Dialog>
