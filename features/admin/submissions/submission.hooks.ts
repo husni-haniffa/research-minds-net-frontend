@@ -2,6 +2,7 @@ import { useAuth } from "@clerk/nextjs"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { fetchSubmissions, submissionApproved, submissionRejected, submissionUnderReview, publishSubmission, deleteSubmission, addSocialMediaLinks, updateSocialMediaLinks } from "./submission.api"
 import { toast } from "sonner"
+import { submissionRequestChanges } from "@/api/submission"
 
 
 export function useSubmissions() {
@@ -38,6 +39,34 @@ export function useSubmissionUnderReview() {
     })
 }
 
+
+export function useSubmissionRequestChanges() {
+    const { getToken } = useAuth()
+    const queryClient = useQueryClient()
+    return useMutation({
+        mutationFn: async ({
+            id,
+            message,
+        }: {
+            id: string;
+            message: string;
+        }) => {
+            const token = await getToken()
+            if (!token) throw new Error("Not authenticated")
+            return submissionRequestChanges(id, token, message)
+        },
+        onSuccess: () => {
+            toast.success("Moved to Request Changes")
+            queryClient.invalidateQueries({ queryKey: ["submissions"] })
+
+        },
+        onError: (err: Error) => {
+            toast.error(err.message ?? "Update failed")
+        },
+
+    })
+}
+
 export function useSubmissionApproved() {
     const { getToken } = useAuth()
     const queryClient = useQueryClient()
@@ -62,10 +91,16 @@ export function useSubmissionReject() {
     const { getToken } = useAuth()
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: async (id: string) => {
+        mutationFn: async ({
+            id,
+            reason,
+        }: {
+            id: string;
+            reason: string;
+        }) => {
             const token = await getToken()
             if (!token) throw new Error("Not authenticated")
-            return submissionRejected(id, token)
+            return submissionRejected(id, token, reason)
         },
         onSuccess: () => {
             toast.success("Moved to Rejected")

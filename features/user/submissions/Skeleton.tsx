@@ -68,15 +68,15 @@ export const SubmissionTableSkeleton = () => {
       <Table>
       <TableHeader>
         <TableRow>
-            <TableHead>Title</TableHead>
-            <TableHead>Research</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>File</TableHead>
-            <TableHead>Created</TableHead>
-            <TableHead>Updated</TableHead>
-            <TableHead>Edit</TableHead>
-            <TableHead>Live</TableHead>
+          <TableHead>Title</TableHead>
+          <TableHead>Research</TableHead>
+          <TableHead>Category</TableHead>
+          <TableHead>Status</TableHead>
+          <TableHead>Message</TableHead>
+          <TableHead>File</TableHead>
+          <TableHead>Created</TableHead>
+          <TableHead>Edit</TableHead>
+          <TableHead>Live</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

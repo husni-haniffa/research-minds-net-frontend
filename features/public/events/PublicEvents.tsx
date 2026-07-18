@@ -1,4 +1,5 @@
 "use client"
+import UserBanner from '@/components/shared/UserBanner'
 import EventCard from './EventCard'
 import { motion } from 'framer-motion'
 
@@ -31,6 +32,7 @@ const PublicEvents = () => {
           Discover and join upcoming research workshops, webinars, academic conferences, and networking sessions.
         </motion.p>
       </header>
+      <UserBanner/>
         <EventCard/>
     </section>
   )
