@@ -27,9 +27,10 @@ export function useSubmissionUnderReview() {
             if (!token) throw new Error("Not authenticated")
             return submissionUnderReview(id, token)
         },
-        onSuccess: () => {
+        onSuccess: (_, id) => {
             toast.success("Moved to Under Review")
             queryClient.invalidateQueries({ queryKey: ["submissions"] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", id] })
           
         },
         onError: (err: Error) => {
@@ -55,9 +56,10 @@ export function useSubmissionRequestChanges() {
             if (!token) throw new Error("Not authenticated")
             return submissionRequestChanges(id, token, message)
         },
-        onSuccess: () => {
+        onSuccess: (_, id) => {
             toast.success("Moved to Request Changes")
             queryClient.invalidateQueries({ queryKey: ["submissions"] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", id] })
 
         },
         onError: (err: Error) => {
@@ -76,9 +78,10 @@ export function useSubmissionApproved() {
             if (!token) throw new Error("Not authenticated")
             return submissionApproved(id, token)
         },
-        onSuccess: () => {
+        onSuccess: (_, id) => {
             toast.success("Moved to Approved")
             queryClient.invalidateQueries({ queryKey: ["submissions"] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", id] })
             
         },
         onError: (err: Error) => {
@@ -102,9 +105,10 @@ export function useSubmissionReject() {
             if (!token) throw new Error("Not authenticated")
             return submissionRejected(id, token, reason)
         },
-        onSuccess: () => {
+        onSuccess: (_, id) => {
             toast.success("Moved to Rejected")
             queryClient.invalidateQueries({ queryKey: ["submissions"] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", id] })
             
         },
         onError: (err: Error) => {
@@ -129,9 +133,10 @@ export function usePublishSubmission() {
             if (!token) throw new Error("Not authenticated")
             return publishSubmission(id, accessLevel, token)
         },
-        onSuccess: () => {
+        onSuccess: (_, id) => {
             toast.success("Submission published")
             queryClient.invalidateQueries({ queryKey: ["submissions"] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", id] })
         },
         onError: (err: Error) => {
             toast.error(err.message ?? "Publish failed")
@@ -153,9 +158,10 @@ export function useDeleteSubmission(
         },
         onMutate: (id) => setDeletingId(id),
         onSettled: () => setDeletingId(null),
-        onSuccess: () => {
+        onSuccess: (_, id) => {
             toast.success("Submission deleted")
             queryClient.invalidateQueries({ queryKey: ["submissions"] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", id] })
         },
         onError: (err: Error) => {
             toast.error(err.message ?? "Delete failed")
@@ -184,9 +190,10 @@ export function useAddSocialMediaLinks() {
             if (!token) throw new Error("Not authenticated")
             return addSocialMediaLinks(submissionId, socialMediaLinks, token)
         },
-        onSuccess: () => {
+        onSuccess: (_, submissionId) => {
             toast.success("Social media links added successfully")
             queryClient.invalidateQueries({ queryKey: ["submissions"] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", submissionId] })
         },
         onError: (err: Error) => {
             toast.error(err.message ?? "Failed to add social media links")
@@ -215,9 +222,10 @@ export function useUpdateSocialMediaLinks() {
             if (!token) throw new Error("Not authenticated")
             return updateSocialMediaLinks(submissionId, socialMediaLinks, token)
         },
-        onSuccess: () => {
+        onSuccess: (_, submissionId) => {
             toast.success("Social media links updated successfully")
             queryClient.invalidateQueries({ queryKey: ["submissions"] })
+            queryClient.invalidateQueries({ queryKey: ["submissions", submissionId] })
         },
         onError: (err: Error) => {
             toast.error(err.message ?? "Failed to update social media links")
