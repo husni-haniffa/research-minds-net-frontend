@@ -1,5 +1,8 @@
 import z from "zod"
 
+export const MAX_FILE_SIZE_BYTES = 4 * 1024 * 1024; 
+export const MAX_FILE_SIZE_LABEL = "4MB";
+
 type Status = 'PENDING' | 'UNDER_REVIEW' | "CHANGES_REQUESTED" | 'REJECTED' | 'ACCEPTED'
 
 export interface UserSubmissionResponse {
@@ -78,6 +81,10 @@ export const formSchema = z.object({
                 ].includes(file.type),
             { message: "Only PDF, DOC, or DOCX files are allowed" }
         )
+        .refine(
+            (file) => file.size <= MAX_FILE_SIZE_BYTES,
+            { message: `File must not exceed ${MAX_FILE_SIZE_LABEL}` }
+        )
 
         
 });
@@ -94,6 +101,10 @@ export const editFormSchema = formSchema.extend({
                     ].includes(file.type),
                 { message: "Only PDF, DOC, or DOCX files are allowed" }
             )
+        .refine(
+            (file) => file.size <= MAX_FILE_SIZE_BYTES,
+            { message: `File must not exceed ${MAX_FILE_SIZE_LABEL}` }
+        )
         .optional()
 
 })

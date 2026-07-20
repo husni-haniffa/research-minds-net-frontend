@@ -1,5 +1,8 @@
 import z from "zod"
 
+export const MAX_FILE_SIZE_BYTES = 4 * 1024 * 1024;
+export const MAX_FILE_SIZE_LABEL = "4MB";
+
 export interface NewsResponse {
     _id: string
     title: string
@@ -32,8 +35,7 @@ export const formSchema = z.object({
         .max(10000, "News content is too long"),
 
     file: z
-        .instanceof(File)
-        .optional()
+        .instanceof(File)   
         .refine(
             (file) =>
                 !file ||
@@ -41,7 +43,13 @@ export const formSchema = z.object({
             {
                 message: "Only JPG, JPEG, or PNG files are allowed",
             }
-        ),
+        )
+        .refine(
+                    (file) => file.size <= MAX_FILE_SIZE_BYTES,
+                    { message: `File must not exceed ${MAX_FILE_SIZE_LABEL}` }
+                )
+        .optional()
+        
 });
 
 
